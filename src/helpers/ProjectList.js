@@ -14,7 +14,7 @@ export const ProjectList = [
   {
     name: "Reel box app",
     image: Proj2,
-    skills: "React,Node.js,MongoDB",
+    skills: "Angular, NodeJs, Postgres, Redis, Heroku",
     link: "https://reel--box.web.app/signup",
   },
   {
