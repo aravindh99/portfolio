@@ -1,58 +1,13 @@
 
-Interactive Portfolio Website with JS, C++, Animation, and Free AI Integration
 
-Layout Structure and Navigation
-Begin with a clean, single-page design (built in React) where a fixed navbar anchors each section (Home, Story, Projects, AI, Contact). Use TailwindCSS to create responsive layouts (flex/grid utilities, breakpoints, dark mode toggle). At the very top, display your name/logo and a succinct tagline to brand yourself. Include a prominent “Contact” or “Resume” call-to-action button so recruiters can easily email you or download your CV
 
-. Consider a floating or sticky contact widget (or chat icon) so contact info is never far away. As a guideline, the “basic formula” of a portfolio includes a logo, tagline, featured work, and contact info
 
-. Tailor the site to your journey: for example, you could feature a “Technical Skills” or “About Me” anchor, but avoid bullet-list resumes – instead humanize it with narrative text or a timeline (see Storytelling below).
-Use React Router (or anchor links) for smooth scrolling between sections. Ensure mobile-friendly menus (hamburger for small screens).
-Highlight branding: your name/logo on every page and in the title, plus a matching color scheme. This reinforces identity at each viewport.
-Provide contact/resume links in multiple places: a top Navbar button, a footer, and/or a side-floating element. 
-
-Interactive Storytelling & Animations
-Use GSAP and Lottie to turn your life story into an engaging, scroll-driven timeline. Instead of static text lists, show key stages (“Gaming”, “Cheat-Engine Hobby”, “Phishing Research”, “Web Curiosity”, “MSc (CIT)”, “Full-Stack Dev”) as successive scenes. For example:
-GSAP ScrollTimeline: As the user scrolls, trigger GSAP timeline animations that reveal each life stage (fade-ins, parallax, or vector graphics). GSAP’s powerful Timeline feature is ideal for interactive storytelling
-blog.pixelfreestudio.com
-. For instance, pin a vertical timeline and animate icons or short text snippets at each stop (a game controller icon for “Gaming”, an email icon for “Phishing”, a university hat for “MSc”, etc.). The timeline format makes your journey scannable and personal
-
-Lottie Animations: Sprinkle lightweight Lottie JSON animations to bring flair (e.g. a subtle pixelated game loop, a cursor exploring a webpage, or a spinning globe for “learning” stages). Lottie animations (exported from After Effects) run smoothly and encourage scrolling engagement
-lottiefiles.com
-. For example, an animated mouse pointer inviting “Scroll” or a pixel-art animation can add a fun gaming vibe Keep animations subtle and relevant so they complement (not overwhelm) your story.
-Performance & Accessibility: Don’t animate every element. Prioritize content and defer complex animations off-screen. Test on real devices (desktop and mobile) to ensure smooth performance
-
-. Honor user preferences: use CSS @media (prefers-reduced-motion: reduce) to disable non-critical animations for motion-sensitive users
-
-Project Showcase and Case Studies
-Dedicate a section to your key projects (central auth system, billing app, college websites, etc.). Lead with visual thumbnails or screenshots: a grid or carousel where each project’s image draws the eye. Recruiters form first impressions on visuals
-kinsta.com
-, so use crisp screenshots or short GIFs. For example, have cards with a project title and tech stack on hover. Clicking a project should open more detail or a live link.
-Full-Stack Projects (React/Node): Include at least one substantial full-stack app using your primary stack (React/Tailwind + Node/Express + MySQL). Projects built with modern tech are in high demand
-nucamp.co
-. For instance, showcase your centralized auth system and billing app with links to live demos or GitHub. Highlight these as “anchor projects” that solve real problems
-nucamp.co
-.
-Concise Descriptions: Under each thumbnail or in a modal, briefly explain the problem, your approach, and technologies used. Use bullet points or short paragraphs. As Kinsta notes, visitors first see visuals, so pair every image with a headline and a blurb
-kinsta.com
-. For example: “Company Billing App: A React/Node web app with Stripe integration for automated invoicing (built at Xtown Co.). Technologies: React, Express, MySQL, Docker.”
-Case Study Callouts: If space allows, turn one or two projects into mini case studies. List the purpose, your role, key challenges, and impact/outcome (metrics or user feedback). Kinsta recommends case studies to show process and results
-kinsta.com
-. E.g. “Added multi-user support to the billing app, reducing invoice errors by 30%.” This depth demonstrates problem-solving beyond the finished UI.
-Live Links and Code: For each project, include a “View Live” and/or “View Code” link. This could be a small icon or button. If possible, embed a GitHub icon with your repo. (Even if GitHub contributions are implied, making it easy to click shows transparency.)
 C++/WebAssembly Demo (Tech Deep Dive)
 If you want to highlight your C++ skills, embed a small C++ → WebAssembly interactive demo. For example, create a math puzzle, an algorithm visualizer, or a simple game (like Tic-Tac-Toe or a bouncing balls animation). Compile it with Emscripten and load it in a React component. WebAssembly allows C/C++ code to run in the browser at near-native speed
-medium.com
+
 , which impresses tech-savvy recruiters.
 Why WebAssembly: As one tutorial notes, WASM offers a “sizable performance increase for data-heavy applications, and opens the browser up to C/C++”
-medium.com
-. In practice, this means a C++ simulation or graphics demo feels smooth.
-Example Projects: You could implement a simple physics demo (e.g. bouncing balls) or maze generator in C++. (The Twr-wasm examples include C++ demos like bouncing balls and a Pong game
-twiddlingbits.dev
- – these illustrate the kind of interactivity you can achieve.) A coded math tool is also neat: for instance, a live fractal generator or Fourier transform visualizer using C++ math libraries, compiled to WASM.
-Integration: Write your C++ logic (e.g. in module.cpp), compile it with emcc (as in
-medium.com
-), and then load it via the generated JS/WASM in your React app. You can wrap it in a <canvas> or <div> and animate with requestAnimationFrame. Even a small demo (like drawing moving particles) conveys “systems skills + performance optimization.” Include a note like “Demonstration implemented in C++ → WebAssembly” in the caption.
+
 
 AI-Powered Interactive Feature
 
@@ -77,29 +32,19 @@ Throughout the site, follow good UI/UX: keep paragraphs short, use headers, list
 
 
 1. Prepare Your Live2D Model
-Create or commission a Live2D model (a .model3.json plus associated .moc3, texture, and motion files). You can design one in Live2D Cubism or hire an artist on platforms like Fiverr.
+Create  a Live2D model (a .model3.json plus associated .moc3, texture, and motion files). You can design one in Live2D Cubism .
 
 Export the model into a folder inside your Next.js public/ directory, e.g. public/live2d/avatar.model3.json and its assets in public/live2d/assets/.
 
 2. Install & Import Sora
 Add the Pixi-Live2D Sora package:
 
-bash
-Copy
-Edit
 npm install pixi-live2d-sora pixi.js
-Or with yarn:
 
-bash
-Copy
-Edit
-yarn add pixi-live2d-sora pixi.js
 3. Create a React Component for Your Avatar
 In components/Live2DAvatar.tsx:
 
-tsx
-Copy
-Edit
+
 'use client';
 import { useEffect, useRef } from 'react';
 import * as PIXI from 'pixi.js';

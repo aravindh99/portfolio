@@ -1,0 +1,54 @@
+:root {
+  --color-bg-dark: #18191a;
+  --color-bg-light: #f8efd4;
+  --color-text-dark: #f8efd4;
+  --color-text-light: #18191a;
+  --spotlight: rgba(248, 239, 212, 0.12);
+}
+
+.app-root {
+  min-height: 100vh;
+  width: 100vw;
+  position: relative;
+  background: var(--color-bg-dark);
+  color: var(--color-text-dark);
+  transition: background 0.3s, color 0.3s;
+  overflow-x: hidden;
+}
+
+.app-root.light {
+  background: var(--color-bg-light);
+  color: var(--color-text-light);
+}
+
+.app-root.light, .app-root.light * {
+  color: var(--color-text-light) !important;
+}
+
+.app-root.light {
+  --spotlight: rgba(24, 25, 26, 0.12);
+}
+
+.background-effect {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(600px circle at 50vw 50vh, var(--spotlight), transparent 80%);
+  transition: background 0.3s;
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 24px;
+  right: 32px;
+  z-index: 10;
+  background: none !important;
+  border: none;
+  font-size: 2rem;
+  color: inherit;
+  cursor: pointer;
+  transition: color 0.3s;
+  box-shadow: none;
+  outline: none;
+} 
