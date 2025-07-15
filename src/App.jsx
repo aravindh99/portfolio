@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import Logo from './components/Logo'
-import Story from './components/Story'
 import BackgroundEffect from './components/BackgroundEffect'
 import { FaSun, FaMoon } from 'react-icons/fa'
-import './App.css'
 import About from './components/About'
+import Navigation from "./components/Navigation"
+
 function App() {
   const [theme, setTheme] = useState('dark')
 
@@ -13,19 +13,24 @@ function App() {
   return (
     <div className={`app-root ${theme}`}>
       <BackgroundEffect theme={theme} />
-      <header className='header'>
-      <button
-        className="theme-toggle"
-        onClick={toggleTheme}
-        aria-label="Toggle theme"
-      >
-        {theme === 'dark' ? <FaSun /> : <FaMoon />}
-      </button>
-     
-        <Logo />
+      <header>
+          <Logo />
+          <button
+            className="theme-toggle"
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+          >
+            {theme === 'dark' ? <FaSun /> : <FaMoon />}
+          </button>
       </header>
-      <About />
-      <Story />
+      <div className="main-content">
+        <Navigation />
+        <main>
+          <section id="about"><About /></section>
+          {/* <section id="experience"><Experience /></section>
+          <section id="projects"><Projects /></section> */}
+        </main>
+      </div>
     </div>
   )
 }

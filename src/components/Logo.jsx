@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './Logo.css'; // We'll create this file
 
 function Logo() {
   const [toggled, setToggled] = useState(false);
@@ -7,10 +6,17 @@ function Logo() {
   const handleClick = () => setToggled((prev) => !prev);
 
   return (
-    <div className={`logo-container${toggled ? ' toggled' : ''}`} onClick={handleClick}>
+    <button
+      type="button"
+      className={`logo-container${toggled ? ' toggled' : ''}`}
+      onClick={handleClick}
+      aria-label="Toggle logo initials"
+      tabIndex={0}
+      style={{ border: 'none', background: 'none', padding: 0, margin: 0, cursor: 'pointer' }}
+    >
       <span className="logo-full">Aravindh</span>
       <span className="logo-initials">AN</span>
-    </div>
+    </button>
   );
 }
 
