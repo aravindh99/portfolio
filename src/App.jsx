@@ -7,7 +7,6 @@ import Navigation from "./components/Navigation"
 import Skills from "./components/Skills"
 import Experience from "./components/Experience"
 import Projects from "./components/Projects"
-import Game from "./components/Game"
 import Ai from "./components/Ai"
 
 function App() {
@@ -35,7 +34,7 @@ function App() {
           <section id="skills"><Skills /></section>
           <section id="experience"><Experience /></section>
           <section id="projects"><Projects /></section> 
-          <section id="game"><Game/></section>
+          
         </main>
         <Ai/>
       </div>
