@@ -1,5 +1,5 @@
 
-export default function Projects(){
+export default function Ai(){
 
     return(
         <>
