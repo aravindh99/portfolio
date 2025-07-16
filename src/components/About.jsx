@@ -10,12 +10,12 @@ import { FaWhatsapp } from "react-icons/fa";
 export default function About() {
   const [showFirst, setShowFirst] = useState(true);
 
-  function handleMouse() {
-    setShowFirst((prev) => !prev);
-  }
+ 
 
   return (
+   
     <div className='about'>
+      
       <div
         className="ara-img-stack"
         onMouseEnter={() => setShowFirst(false)}

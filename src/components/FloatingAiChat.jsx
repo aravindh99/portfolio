@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import catWebp from "../assets/cat.webp";
+import cat1Webp from "../assets/cat1.webp";
 
 export default function FloatingAiChat() {
   const [question, setQuestion] = useState("");
@@ -8,6 +9,26 @@ export default function FloatingAiChat() {
   const [catVisible, setCatVisible] = useState(false);
   const [inputVisible, setInputVisible] = useState(false);
   const inputRef = useRef(null);
+  const [theme, setTheme] = useState("dark");
+
+  useEffect(() => {
+    // Detect theme from app-root class
+    function updateTheme() {
+      const root = document.querySelector('.app-root');
+      if (root && root.classList.contains('light')) {
+        setTheme('light');
+      } else {
+        setTheme('dark');
+      }
+    }
+    updateTheme();
+    const observer = new MutationObserver(updateTheme);
+    const root = document.querySelector('.app-root');
+    if (root) {
+      observer.observe(root, { attributes: true, attributeFilter: ['class'] });
+    }
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     // Fade in cat, then input
@@ -36,10 +57,12 @@ export default function FloatingAiChat() {
     // setResponse(data.response);
   }
 
+  const catImg = theme === 'light' ? catWebp : cat1Webp;
+
   return (
     <div className={`floating-ai-chat minimal`} style={{ zIndex: 9999 }}>
       <img
-        src={catWebp}
+        src={catImg}
         alt="AI Assistant"
         className={`ai-chat-avatar only-cat${catVisible ? " visible" : ""}`}
       />

@@ -126,15 +126,15 @@ html {
 header {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 30px;
-  height: 112px;
-  min-height: 102px;
+  justify-content: space-between;
+  gap: 0;
+  height: 80px;
+  min-height: 60px;
   width: 100%;
   background: transparent;
-  position: fixed;
-  z-index: 10;
- 
+  position: static;
+  padding: 0 32px;
+  box-sizing: border-box;
 }
 
 .main-content {
@@ -145,66 +145,111 @@ header {
 }
 
 main {
-
   padding: 0 32px;
   box-sizing: border-box;
 }
 
-/* === Navigation === */
-.side-nav {
-  position: fixed;
-  top: 40%;
-  right: 190px;
-  transform: translateY(-50%);
-  width: 100px;
+/* === Header Nav (Horizontal) === */
+
+
+.header-right {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  z-index: 99;
-  margin-right: 40px;
+  align-items: center;
+  gap: 18px;
 }
 
-.side-nav ul {
-  list-style: none;
+.logo-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  width: auto;
+  min-width: 0;
+  min-height: 0;
   padding: 0;
   margin: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: 'Big Shoulders Stencil Display', cursive;
+  font-size: 30px;
+  transition: opacity 0.4s, transform 0.7s cubic-bezier(.68,-0.55,.27,1.55);
+  color: var(--icon-color);
 }
 
-.side-nav li {
-  margin: 24px 0;
-}
-
-.side-nav a {
-  color: var(--nav-link-color);
-  text-decoration: none;
-  font-size: 1.1rem;
-  font-weight: 500;
+.logo-animated {
   display: inline-block;
-  line-height: 2.2rem;
-  min-width: 0;
-  transition: transform 0.18s cubic-bezier(.68,-0.55,.27,1.55);
-  will-change: transform;
+  background: linear-gradient(270deg, var(--logo-gradient1), var(--logo-gradient2), var(--logo-gradient3), var(--logo-gradient4));
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 12px var(--logo-shadow1), 0 1px 2px var(--logo-shadow2);
+  animation: gradient-move 2.5s linear infinite;
+  font-size: inherit;
 }
 
-.side-nav a.active,
-.side-nav a:hover {
-  color: var(--color-text-dark);
-  font-weight: 700;
-  transform: scale(1.18);
-  z-index: 1;
+.app-root.light .logo-container {
+  color: var(--icon-color-light);
+}
+.app-root:not(.light) .logo-container {
+  color: var(--icon-color-dark);
 }
 
-/* === Logo === */
-.logo-container {
-  height: 48px;
-  width: 90px;
+@media (max-width: 900px) {
+  .logo-container {
+    font-size: 20px;
+  }
+}
+@media (max-width: 700px) {
+  .logo-container {
+    font-size: 16px;
+  }
+}
+
+.theme-toggle {
+  font-size: 2rem;
+  background: none;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  color: var(--icon-color);
+  cursor: pointer;
+  transition: color 0.2s;
+  margin: 0;
+  padding: 0;
+  width: 2.4rem;
+  height: 2.4rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  background-color: #535bf2;
- 
 }
+
+.app-root.light .theme-toggle {
+  color: var(--icon-color-light);
+}
+
+.app-root:not(.light) .theme-toggle {
+  color: var(--icon-color-dark);
+}
+
+@media (max-width: 900px) {
+  .theme-toggle {
+    font-size: 1.4rem;
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+}
+@media (max-width: 700px) {
+  .theme-toggle {
+    font-size: 1.1rem;
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+}
+
+/* === Logo === */
+
 
 .logo-full, .logo-initials {
   width: 100%;
@@ -261,19 +306,6 @@ main {
 }
 
 /* === Theme Toggle === */
-.theme-toggle {
-  background: none;
-  border: none;
-  box-shadow: none;
-  outline: none;
-  font-size: 2rem;
-  color: inherit;
-  cursor: pointer;
-  transition: color 0.2s;
-  margin-right: 60px;
-  margin-top: 6px;
-}
-
 .theme-toggle:focus,
 .theme-toggle:focus-visible {
   outline: none;
@@ -339,32 +371,6 @@ main {
 }
 
 @media (max-width: 700px) {
-  header {
-    height: 54px;
-    min-height: 54px;
-    padding: 0 10px;
-    gap: 10px;
-  }
-  .logo-container {
-    height: 36px;
-    width: 36px;
-  }
-  .logo-full, .logo-initials {
-    font-size: 20px;
-  }
-  .theme-toggle {
-    font-size: 1.4rem;
-  }
-  .side-nav {
-    right: 10px;
-    width: 120px;
-  }
-  .about {
-    flex-direction: column;
-    gap: 24px;
-    padding: 20px 8px;
-  }
- 
   .abt h2 {
     font-size: 1.4rem;
   }
@@ -949,4 +955,90 @@ header, .side-nav {
 /* Remove old .Ai margin-top rule */
 .Ai {
   margin-top: 0 !important;
+}
+
+/* Remove/override old side-nav styles */
+.side-nav { display: none !important; }
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 18px;
+  z-index: 100;
+  padding: 12px 24px 12px 24px;
+  border-bottom-left-radius: 18px;
+  background: none;
+  backdrop-filter: none;
+}
+
+
+.theme-toggle {
+  font-size: 2rem;
+  background: none;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  color: inherit;
+  cursor: pointer;
+  transition: color 0.2s;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .fixed-header {
+    padding: 8px 10px 8px 10px;
+    gap: 10px;
+  }
+  .logo-container {
+    height: 36px;
+    width: 36px;
+  }
+  .theme-toggle {
+    font-size: 1.4rem;
+  }
+}
+@media (max-width: 700px) {
+  .fixed-header {
+    position: static;
+    padding: 4px 2vw 4px 2vw;
+    gap: 6px;
+    top: auto;
+    right: auto;
+    left: auto;
+    border-bottom-left-radius: 12px;
+  }
+  .logo-container {
+    height: 28px;
+    width: 28px;
+  }
+  .theme-toggle {
+    font-size: 1.1rem;
+  }
+}
+
+.main-content {
+  margin-top: 80px;
+}
+@media (max-width: 900px) {
+  .main-content {
+    margin-top: 60px;
+  }
+}
+@media (max-width: 700px) {
+  .main-content {
+    margin-top: 44px;
+  }
+}
+
+.section-heading {
+  font-size: 2.2rem;
+  margin-bottom: 2.5rem;
+  color: var(--nav-link-color);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-top: 0;
 }
