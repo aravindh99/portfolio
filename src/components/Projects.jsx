@@ -13,23 +13,22 @@ const projects = [
   },
   {
     name: "Billing App (Full Stack)",
-    github: "https://github.com/aravindh99/bill-front",
+    github: "https://github.com/aravindh99/bill-back",
     live: "https://goog.com", // placeholder
     description:
       "A full-stack billing and invoice management app. Features user authentication, bill creation, and management. Separate frontend and backend repos.",
     stack: ["React", "Node.js", "Express", "MySQL", "Prisma", "React-Pdf"],
-    backend: "https://github.com/aravindh99/bill-back",
     note: "Frontend will be hosted on Vercel, backend on Render, MySQL DB (hosted TBD)."
   }
 ];
 
 const clientProjects = [
   {
-    name: "CareerTechPro",
+    name: "CareerTechPro (Godaddy domain)",
     url: "https://www.careertechpro.xyz"
   },
   {
-    name: "RiaxPrime",
+    name: "RiaxPrime (Godaddy domain)",
     url: "https://www.riaxprime.xyz"
   }
 ];
@@ -81,6 +80,7 @@ export default function Projects() {
         {clientProjects.map((proj, idx) => (
           <a className="project-link-card" href={proj.url} target="_blank" rel="noopener noreferrer" key={idx}>
             {proj.name}
+     
           </a>
         ))}
       </div>

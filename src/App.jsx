@@ -7,7 +7,7 @@ import Navigation from "./components/Navigation"
 import Skills from "./components/Skills"
 import Experience from "./components/Experience"
 import Projects from "./components/Projects"
-import Ai from "./components/Ai"
+import FloatingAiChat from "./components/FloatingAiChat"
 
 function App() {
   const [theme, setTheme] = useState('dark')
@@ -36,7 +36,7 @@ function App() {
           <section id="projects"><Projects /></section> 
           
         </main>
-        <Ai/>
+        <FloatingAiChat />
       </div>
     </div>
   )
