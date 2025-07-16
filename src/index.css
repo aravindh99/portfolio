@@ -105,18 +105,7 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
+
 
 html {
   scroll-behavior: smooth;
@@ -196,17 +185,6 @@ main {
   color: var(--icon-color-dark);
 }
 
-@media (max-width: 900px) {
-  .logo-container {
-    font-size: 20px;
-  }
-}
-@media (max-width: 700px) {
-  .logo-container {
-    font-size: 16px;
-  }
-}
-
 .theme-toggle {
   font-size: 2rem;
   background: none;
@@ -231,21 +209,6 @@ main {
 
 .app-root:not(.light) .theme-toggle {
   color: var(--icon-color-dark);
-}
-
-@media (max-width: 900px) {
-  .theme-toggle {
-    font-size: 1.4rem;
-    width: 1.8rem;
-    height: 1.8rem;
-  }
-}
-@media (max-width: 700px) {
-  .theme-toggle {
-    font-size: 1.1rem;
-    width: 1.4rem;
-    height: 1.4rem;
-  }
 }
 
 /* === Logo === */
@@ -316,14 +279,15 @@ main {
 .about {
   gap: 48px;
   max-width: 850px;
-  padding: 32px 24px;
   background: transparent;
   box-shadow: none;
-  min-width: 300px;
-  min-height: calc(100vh - 112px);
+  min-width: 260px;
+  min-height: 400px;
   display: flex;
   align-items: center;
-  margin-top: -100px;
+  margin-left: 40px;
+  margin-bottom: 100px;
+  margin-top: 60px;
 }
 
 .ara-img-stack {
@@ -368,15 +332,6 @@ main {
   font-size: 1.15rem;
   line-height: 1.7;
   margin: 0;
-}
-
-@media (max-width: 700px) {
-  .abt h2 {
-    font-size: 1.4rem;
-  }
-  .abt p {
-    font-size: 1rem;
-  }
 }
 
 .about-icons {
@@ -464,23 +419,6 @@ main {
 .frontEnd svg:hover, .backEnd svg:hover, .others svg:hover {
   color: #64ffda;
   transform: scale(1.18);
-}
-
-@media (max-width: 900px) {
-  .skillWrap {
-    flex-direction: column;
-    gap: 24px;
-    padding: 20px 8px;
-  }
-  .skillWrap h3 {
-    min-width: 0;
-    margin: 0 0 16px 0;
-  }
-  .frontEnd, .backEnd, .others {
-    grid-template-columns: repeat(2, minmax(80px, 1fr));
-    gap: 14px 8px;
-    padding: 16px 8px;
-  }
 }
 
 /* === Custom Scrollbar === */
@@ -598,31 +536,6 @@ main {
   opacity: 0.93;
   line-height: 1.6;
   margin-top: 0.2rem;
-}
-
-@media (max-width: 700px) {
-  .experience-section {
-    padding: 20px 8px;
-    min-height: unset;
-  }
-  .experience-heading {
-    font-size: 1.4rem;
-    margin-bottom: 1.2rem;
-  }
-  .experience-card {
-    padding: 14px 8px 12px 8px;
-    border-radius: 12px;
-  }
-  .experience-title {
-    font-size: 1.08rem;
-  }
-  .experience-meta {
-    font-size: 0.98rem;
-    gap: 8px 10px;
-  }
-  .experience-desc {
-    font-size: 0.98rem;
-  }
 }
 
 .projectSec{
@@ -755,84 +668,40 @@ margin-left: 40px;
   transform: translateY(-2px) scale(1.04);
 }
 
-@media (max-width: 700px) {
-  .projectSec {
-    padding: 20px 8px;
-    margin-left: 0;
-    min-height: unset;
-  }
-  .ProjectContainer {
-    gap: 18px;
-  }
-  .project-card {
-    padding: 14px 8px 12px 8px;
-    border-radius: 12px;
-  }
-  .project-title {
-    font-size: 1.08rem;
-  }
-  .project-desc, .project-stack, .project-backend, .project-note {
-    font-size: 0.98rem;
-  }
-  .project-link-card {
-    padding: 10px 12px;
-    font-size: 0.98rem;
-    border-radius: 8px;
-  }
-}
-
-/* === Floating AI Chat Styles (Minimal) === */
-.floating-ai-chat.minimal {
+/* === NEW Floating AI Chat Styles === */
+.floating-ai-chat-new {
   position: fixed;
-  bottom: 40px;
-  right: 24px;
-  width: 340px;
-  max-width: 95vw;
-  background: none !important;
-  box-shadow: none !important;
+  bottom: 50px;
+  right: 100px;
+  width: 380px;
+  max-width: 98vw;
+  background: none;
+  box-shadow: none;
   border-radius: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   z-index: 9999;
-  pointer-events: none;
-}
-
-.ai-chat-avatar.only-cat {
   opacity: 0;
-  transform: translateY(60px) scale(1.18);
-  transition: opacity 0.7s cubic-bezier(.68,-0.55,.27,1.55), transform 0.7s cubic-bezier(.68,-0.55,.27,1.55);
-  margin-bottom: 0;
-  box-shadow: none;
-  background: none;
-  width: 104px;
-  height: 104px;
-  border-radius: 50%;
-  object-fit: cover;
+  transform: translateY(40px);
+  transition: opacity 0.6s cubic-bezier(.68,-0.55,.27,1.55), transform 0.6s cubic-bezier(.68,-0.55,.27,1.55);
   pointer-events: auto;
 }
-.ai-chat-avatar.only-cat.visible {
+.floating-ai-chat-new.visible {
   opacity: 1;
-  transform: translateY(0) scale(1.22);
+  transform: translateY(0);
 }
 
-.ai-chat-form.minimal {
-  opacity: 0;
-  pointer-events: none;
-  display: flex;
-  gap: 8px;
+.ai-chat-form-new {
   width: 100%;
-  justify-content: center;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0.5rem;
   margin-top: 0;
-  transition: opacity 0.5s 0.2s;
 }
-.ai-chat-form.minimal.visible {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.ai-chat-input.minimal {
+.ai-chat-input-new {
   flex: 1;
   padding: 0.7em 1em;
   border-radius: 8px;
@@ -845,18 +714,17 @@ margin-left: 40px;
   max-width: 220px;
   box-shadow: none;
 }
-.app-root:not(.light) .ai-chat-input.minimal {
+.app-root:not(.light) .ai-chat-input-new {
   background: #232323;
   color: #f8efd4;
   border: 1px solid #444;
 }
-.ai-chat-input.minimal:focus {
+.ai-chat-input-new:focus {
   outline: none !important;
   border-color: #ccc !important;
   box-shadow: none !important;
 }
-
-.ai-chat-send.minimal {
+.ai-chat-send-new {
   background: #18191a;
   color: #fff;
   border: none;
@@ -868,18 +736,35 @@ margin-left: 40px;
   transition: background 0.2s;
   box-shadow: none;
 }
-.ai-chat-send.minimal:hover {
+.ai-chat-send-new:hover {
   background: #000;
 }
 
-.ai-chat-response.minimal {
-  margin-top: 12px;
+.ai-chat-row {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  margin-top: 0.5rem;
+}
+.ai-chat-avatar-new {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 18px;
+  margin-top: 0;
+  align-self: flex-start;
   background: none;
-  border-radius: 0;
-  padding: 0 4px;
+  box-shadow: none;
+  transition: opacity 0.7s, transform 0.7s;
+  opacity: 1;
+  transform: scale(1.12);
+}
+.ai-chat-response-new {
+  flex: 1;
   color: var(--nav-link-color);
   font-size: 1.08rem;
-  min-height: 32px;
+  min-height: 300px;
   max-width: 320px;
   width: 100%;
   word-break: break-word;
@@ -888,67 +773,18 @@ margin-left: 40px;
   align-self: flex-start;
   animation: fadein 0.5s;
   overflow-wrap: anywhere;
+  margin-top: 0;
 }
-
-@media (max-width: 1200px) {
-  .floating-ai-chat.minimal {
-    right: 12px;
-    bottom: 32px;
-  }
-}
-
-@media (max-width: 900px) {
-  .floating-ai-chat.minimal {
-    right: 8px;
-    bottom: 24px;
-    width: 96vw;
-    max-width: 96vw;
-  }
-}
-
-@media (max-width: 700px) {
-  .floating-ai-chat.minimal {
-    right: 0;
-    left: 0;
-    margin: 0 auto;
-    bottom: 70px; /* above header/nav */
-    width: 98vw;
-    max-width: 98vw;
-    min-width: 0;
-    padding-bottom: 8vw;
-  }
-}
-
-@media (max-width: 600px) {
-  .floating-ai-chat.minimal {
-    right: 0;
-    left: 0;
-    margin: 0 auto;
-    bottom: 70px; /* above header/nav */
-    width: 99vw;
-    max-width: 99vw;
-    min-width: 0;
-    padding-bottom: 16vw;
-  }
-  .ai-chat-avatar.only-cat {
-    width: 72px;
-    height: 72px;
-  }
-  .ai-chat-input.minimal {
-    max-width: 120px;
-    font-size: 0.98rem;
-  }
-  .ai-chat-response.minimal {
-    max-width: 90vw;
-    font-size: 0.98rem;
-  }
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 /* Ensure chat is always above nav/header */
 header, .side-nav {
   z-index: 10;
 }
-.floating-ai-chat.minimal {
+.floating-ai-chat-new {
   z-index: 100;
 }
 
@@ -975,7 +811,6 @@ header, .side-nav {
   backdrop-filter: none;
 }
 
-
 .theme-toggle {
   font-size: 2rem;
   background: none;
@@ -988,50 +823,8 @@ header, .side-nav {
   margin: 0;
 }
 
-@media (max-width: 900px) {
-  .fixed-header {
-    padding: 8px 10px 8px 10px;
-    gap: 10px;
-  }
-  .logo-container {
-    height: 36px;
-    width: 36px;
-  }
-  .theme-toggle {
-    font-size: 1.4rem;
-  }
-}
-@media (max-width: 700px) {
-  .fixed-header {
-    position: static;
-    padding: 4px 2vw 4px 2vw;
-    gap: 6px;
-    top: auto;
-    right: auto;
-    left: auto;
-    border-bottom-left-radius: 12px;
-  }
-  .logo-container {
-    height: 28px;
-    width: 28px;
-  }
-  .theme-toggle {
-    font-size: 1.1rem;
-  }
-}
-
 .main-content {
   margin-top: 80px;
-}
-@media (max-width: 900px) {
-  .main-content {
-    margin-top: 60px;
-  }
-}
-@media (max-width: 700px) {
-  .main-content {
-    margin-top: 44px;
-  }
 }
 
 .section-heading {

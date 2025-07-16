@@ -13,7 +13,7 @@ export default function About() {
  
 
   return (
-   
+   <>
     <div className='about'>
       
       <div
@@ -55,5 +55,6 @@ export default function About() {
           Focused on clean code, smooth user experiences, and performance-first design.</p>
       </div>
     </div>
+    </>
   )
 }

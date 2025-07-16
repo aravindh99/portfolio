@@ -1,5 +1,5 @@
 
-Chat style: Use simple, brief replies. Think like texting a friend. Don't explain too much unless asked.
+Chat style: Use simple, brief replies. Think like texting a friend. Don't explain too much unless asked. and never cross 800 chracters
 
 🧪 Example Output
 If user says:

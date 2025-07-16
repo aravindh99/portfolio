@@ -13,7 +13,7 @@ import { SiVite } from "react-icons/si";
 import { SiWebpack } from "react-icons/si";
 import { FaLinux } from "react-icons/fa6";
 import { SiHuggingface } from "react-icons/si";
-import { SiOllama } from "react-icons/si";
+
 
 
 export default function Skills(){
