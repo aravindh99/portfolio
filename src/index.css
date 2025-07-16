@@ -835,3 +835,129 @@ header, .side-nav {
   letter-spacing: 0.02em;
   margin-top: 0;
 }
+
+/* --- Responsive Layout for All Components --- */
+@media (max-width: 900px) {
+  header {
+    padding: 0 8px;
+    height: 60px;
+    min-height: 48px;
+  }
+  .main-content, main {
+    padding: 0 4px !important;
+    margin-top: 60px !important;
+  }
+  .about, .projectSec, .experience-section, .skillWrap {
+    padding: 12px 4px !important;
+    margin: 0 !important;
+    max-width: 100vw !important;
+  }
+  .logo-container {
+    font-size: 20px;
+  }
+  .theme-toggle {
+    font-size: 1.4rem;
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+  .ai-chat-avatar-new {
+    width: 56px;
+    height: 56px;
+    margin-right: 10px;
+  }
+  .ai-chat-response-new {
+    font-size: 0.98rem;
+    max-width: 90vw;
+  }
+  .ai-chat-form-new {
+    gap: 4px;
+  }
+  .ai-chat-send-new {
+    font-size: 0.98rem;
+    padding: 0.5em 0.8em;
+  }
+  .ai-chat-input-new {
+    font-size: 0.98rem;
+    max-width: 140px;
+  }
+  .abt h2, .section-heading {
+    font-size: 1.4rem;
+  }
+  .abt p {
+    font-size: 1rem;
+  }
+  .about-icons svg {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: 0 2px;
+    height: 44px;
+    min-height: 36px;
+  }
+  .main-content, main {
+    padding: 0 2px !important;
+    margin-top: 44px !important;
+  }
+  .main-content {
+    padding-bottom: 120px !important;
+  }
+  .about, .projectSec, .experience-section, .skillWrap {
+    padding: 6px 2px !important;
+    margin: 0 !important;
+    max-width: 100vw !important;
+  }
+  .logo-container {
+    font-size: 14px;
+  }
+  .theme-toggle {
+    font-size: 1.1rem;
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+  .floating-ai-chat-new {
+    position: fixed !important;
+    right: 0 !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    border-radius: 18px 18px 0 0;
+    background: rgba(24, 25, 26, 0.98);
+    box-shadow: 0 -2px 16px 0 rgba(0,0,0,0.18);
+    padding: 8px 4px 4px 4px;
+    z-index: 1001;
+  }
+  .ai-chat-avatar-new {
+    width: 44px;
+    height: 44px;
+    margin-right: 8px;
+  }
+  .ai-chat-response-new {
+    font-size: 0.95rem;
+    max-width: 80vw;
+    min-height: 40px;
+  }
+  .ai-chat-form-new {
+    gap: 2px;
+  }
+  .ai-chat-send-new {
+    font-size: 0.95rem;
+    padding: 0.4em 0.7em;
+  }
+  .ai-chat-input-new {
+    font-size: 0.95rem;
+    max-width: 180px;
+  }
+  .abt h2, .section-heading {
+    font-size: 1.1rem;
+  }
+  .abt p {
+    font-size: 0.95rem;
+  }
+  .about-icons svg {
+    font-size: 1.1rem;
+  }
+}
