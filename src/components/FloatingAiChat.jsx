@@ -1,94 +1,128 @@
 import { useState, useEffect, useRef } from "react";
 import catWebp from "../assets/cat.webp";
 import cat1Webp from "../assets/cat1.webp";
+import aravindhMd from "../assets/aravindh.md?raw";
+import { HfInference } from "@huggingface/inference";
 
-const INITIAL_PROMPT = "Are you looking for something? Ask anything about Aravindh.";
+// Initial prompt shown before any question
+const INITIAL_PROMPT = "Hey there! I'm Aravindh's virtual sidekick 😉. Curious about him? Ask me anything!";
+
+// Hugging Face API details
+const HF_API_TOKEN = import.meta.env.VITE_HF_API_TOKEN;
+const SYSTEM_PROMPT = `You are an AI assistant for Aravindh's portfolio website.Limit your answers to 1 short sentence only, unless absolutely necessary.If question is hi:
+reply:
+hey hey 👋 how's it going?
+Or:
+hi! I'm Aravindh's little AI buddy — nice to meet ya.
+🎯 Bonus Tip: Add personality quirks
+You can spice things up by giving the bot some habits:
+Uses emojis casually 😄
+Speaks in short bursts
+Has a playful intro line for first-time users`;
+const hf = new HfInference(HF_API_TOKEN);
+
+
 
 export default function FloatingAiChat() {
+  // Chat state
   const [question, setQuestion] = useState("");
-  const [theme, setTheme] = useState("dark");
+  const [reply, setReply] = useState(INITIAL_PROMPT);
   const [typedText, setTypedText] = useState("");
+  const [inputDisabled, setInputDisabled] = useState(false);
+
+  // Theme & UI animation
+  const [theme, setTheme] = useState("dark");
   const [showMain, setShowMain] = useState(false);
-  const [reply, setReply] = useState(INITIAL_PROMPT); // This is the current reply to type
+
   const inputRef = useRef(null);
   const isFirstPrompt = useRef(true);
 
-  // Theme detection
+  // 1. Theme detection
   useEffect(() => {
     function updateTheme() {
-      const root = document.querySelector('.app-root');
-      if (root && root.classList.contains('light')) setTheme('light');
-      else setTheme('dark');
+      const root = document.querySelector(".app-root");
+      setTheme(root?.classList.contains("light") ? "light" : "dark");
     }
     updateTheme();
     const observer = new MutationObserver(updateTheme);
-    const root = document.querySelector('.app-root');
-    if (root) observer.observe(root, { attributes: true, attributeFilter: ['class'] });
+    const root = document.querySelector(".app-root");
+    root && observer.observe(root, { attributes: true, attributeFilter: ["class"] });
     return () => observer.disconnect();
   }, []);
 
-  // Animate everything together from bottom
+  // 2. Entrance animation
   useEffect(() => {
     const timer = setTimeout(() => setShowMain(true), 1000);
     return () => clearTimeout(timer);
   }, []);
 
-  // Typing animation for prompt/reply
+  // 3. Typing animation for replies
   useEffect(() => {
-    let delay = 0;
-    if (isFirstPrompt.current) delay = 2000;
+    let delay = isFirstPrompt.current ? 2000 : 0;
+    setInputDisabled(true);
     const timeout = setTimeout(() => {
       let i = 0;
       setTypedText("");
       const interval = setInterval(() => {
         setTypedText(reply.slice(0, i + 1));
         i++;
-        if (i === reply.length) clearInterval(interval);
-      }, 38);
+        if (i >= reply.length) {
+          clearInterval(interval);
+          setInputDisabled(false);
+        }
+      }, 18); // Faster typing speed
     }, delay);
-    return () => clearTimeout(timeout);
+    return () => {
+      setInputDisabled(false);
+      clearTimeout(timeout);
+    };
   }, [reply, showMain]);
 
-  // Simulate AI reply for demo
+  // Replace askBot with a placeholder reply
   async function askBot(e) {
     e.preventDefault();
     if (!question.trim()) return;
     isFirstPrompt.current = false;
+    setReply("Thinking…");
     setTypedText("");
-    setTimeout(() => {
-      const newReply = "This is a demo AI reply. It skhfwek";
-      setReply(newReply);
-    }, 0);
     setQuestion("");
+
+    try {
+      const response = await hf.chatCompletion({
+        model: "mistralai/Mixtral-8x7B-Instruct-v0.1",
+        messages: [
+          { role: "system", content: SYSTEM_PROMPT + "\n\n" + aravindhMd },
+          { role: "user", content: question }
+        ],
+        max_tokens: 512,
+      });
+      setReply(response.choices[0].message.content);
+    } catch (err) {
+      setReply("Sorry, something went wrong.");
+      console.error(err);
+    }
   }
 
-  const catImg = theme === 'light' ? catWebp : cat1Webp;
+  const catImg = theme === "light" ? catWebp : cat1Webp;
 
   return (
     <div className={`floating-ai-chat-new${showMain ? " visible" : ""}`}>
-      <form
-        className="ai-chat-form-new"
-        onSubmit={askBot}
-        autoComplete="off"
-      >
+      <form className="ai-chat-form-new" onSubmit={askBot} autoComplete="off">
         <input
           ref={inputRef}
           value={question}
           onChange={e => setQuestion(e.target.value)}
-          placeholder="Hi, how're you..."
+          placeholder="Ask me anything about Aravindh…"
           className="ai-chat-input-new"
           autoComplete="off"
+          disabled={inputDisabled}
         />
-        <button className="ai-chat-send-new" type="submit">Ask</button>
+        <button className="ai-chat-send-new" type="submit" disabled={inputDisabled}>Ask</button>
       </form>
       <div className="ai-chat-row">
-        <img
-          src={catImg}
-          alt="AI Assistant"
-          className="ai-chat-avatar-new"
-        />
+        <img src={catImg} alt="AI Assistant" className="ai-chat-avatar-new" />
         <span className="ai-chat-response-new">{typedText}</span>
       </div>
     </div>
   );
-} 
+}
