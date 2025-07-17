@@ -4,7 +4,7 @@ const projects = [
   {
     name: "Auth Service",
     github: "https://github.com/aravindh99/auth",
-    live: "https://goog.com", // placeholder
+    live: "https://google.com", // placeholder
     description:
       "A production-ready authentication microservice built in Go. Supports sign up, login, password reset, and token-based auth. Designed for easy integration with any app.",
     stack: ["React", "Express", "Rechart", "Mysql", "SMTP","JWT token"],
@@ -14,7 +14,7 @@ const projects = [
   {
     name: "Billing App (Full Stack)",
     github: "https://github.com/aravindh99/bill-back",
-    live: "https://goog.com", // placeholder
+    live: "https://google.com", // placeholder
     description:
       "A full-stack billing and invoice management app. Features user authentication, bill creation, and management. Separate frontend and backend repos.",
     stack: ["React", "Node.js", "Express", "MySQL", "Prisma", "React-Pdf"],
