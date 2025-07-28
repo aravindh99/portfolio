@@ -600,6 +600,8 @@ margin-left: 40px;
   font-size: 1.2rem;
   transition: color 0.2s, transform 0.2s;
   margin-left: 4px;
+  position: relative;
+  z-index: 2;
 }
 .project-title-row a:hover {
   color: var(--icon-color);
@@ -627,6 +629,46 @@ margin-left: 40px;
   font-size: 0.98rem;
   font-weight: 500;
   letter-spacing: 0.01em;
+}
+
+.project-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.project-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+  color: var(--skill-bg);
+}
+
+.github-btn {
+  background: var(--nav-link-color);
+  color: var(--skill-bg) !important;
+  border-color: var(--nav-link-color);
+}
+
+.github-btn:hover {
+  transform: translateY(-1px);
+}
+
+.live-btn {
+  background: var(--nav-link-color);
+  color: var(--skill-bg) !important;
+  border-color: var(--nav-link-color);
+}
+
+.live-btn:hover {
+  transform: translateY(-1px);
 }
 
 
@@ -671,7 +713,7 @@ margin-left: 40px;
 /* === NEW Floating AI Chat Styles === */
 .floating-ai-chat-new {
   position: fixed;
-  bottom: 50px;
+  bottom: 40px;
   right: 100px;
   width: 380px;
   max-width: 98vw;
@@ -891,7 +933,7 @@ header, .side-nav {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1200px) {
   header {
     padding: 0 2px;
     height: 44px;
@@ -959,5 +1001,290 @@ header, .side-nav {
   }
   .about-icons svg {
     font-size: 1.1rem;
+  }
+}
+
+.dep{
+  max-width: fit-content;
+}
+
+/* === 404 Page Styles === */
+.not-found-page {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Floating background elements */
+.not-found-page .floating-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.not-found-page .floating-element {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+
+.not-found-page .floating-element:nth-child(1) {
+  width: 80px;
+  height: 80px;
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.not-found-page .floating-element:nth-child(2) {
+  width: 120px;
+  height: 120px;
+  top: 60%;
+  right: 15%;
+  animation-delay: 2s;
+}
+
+.not-found-page .floating-element:nth-child(3) {
+  width: 60px;
+  height: 60px;
+  bottom: 20%;
+  left: 20%;
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+/* Main content */
+.not-found-page .container {
+  text-align: center;
+  z-index: 2;
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 60px 40px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 90%;
+}
+
+.not-found-page .error-code {
+  font-size: 8rem;
+  font-weight: bold;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 3s ease-in-out infinite;
+  margin-bottom: 20px;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.not-found-page .error-title {
+  font-size: 2rem;
+  color: white;
+  margin-bottom: 15px;
+  font-weight: 300;
+  animation: slideInUp 0.8s ease-out;
+}
+
+.not-found-page .error-message {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 40px;
+  line-height: 1.6;
+  animation: slideInUp 0.8s ease-out 0.2s both;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.not-found-page .home-button {
+  display: inline-block;
+  padding: 15px 30px;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  animation: slideInUp 0.8s ease-out 0.4s both;
+}
+
+.not-found-page .home-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.not-found-page .home-button:hover::before {
+  left: 100%;
+}
+
+.not-found-page .home-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Glitch effect for 404 */
+.not-found-page .error-code::before,
+.not-found-page .error-code::after {
+  content: '404';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: glitch 2s infinite;
+}
+
+.not-found-page .error-code::before {
+  animation-delay: 0.1s;
+  transform: translate(-2px, -2px);
+}
+
+.not-found-page .error-code::after {
+  animation-delay: 0.2s;
+  transform: translate(2px, 2px);
+}
+
+@keyframes glitch {
+  0%, 100% {
+    opacity: 0;
+  }
+  10%, 90% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+/* Particle effect */
+.not-found-page .particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.not-found-page .particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  animation: particle-float 8s linear infinite;
+}
+
+.not-found-page .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+.not-found-page .particle:nth-child(2) { left: 20%; animation-delay: 1s; }
+.not-found-page .particle:nth-child(3) { left: 30%; animation-delay: 2s; }
+.not-found-page .particle:nth-child(4) { left: 40%; animation-delay: 3s; }
+.not-found-page .particle:nth-child(5) { left: 50%; animation-delay: 4s; }
+.not-found-page .particle:nth-child(6) { left: 60%; animation-delay: 5s; }
+.not-found-page .particle:nth-child(7) { left: 70%; animation-delay: 6s; }
+.not-found-page .particle:nth-child(8) { left: 80%; animation-delay: 7s; }
+
+@keyframes particle-float {
+  0% {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) scale(1);
+    opacity: 0;
+  }
+}
+
+/* Responsive design for 404 */
+@media (max-width: 768px) {
+  .not-found-page .error-code {
+    font-size: 6rem;
+  }
+  
+  .not-found-page .error-title {
+    font-size: 1.5rem;
+  }
+  
+  .not-found-page .error-message {
+    font-size: 1rem;
+  }
+  
+  .not-found-page .container {
+    padding: 40px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .not-found-page .error-code {
+    font-size: 4rem;
+  }
+  
+  .not-found-page .error-title {
+    font-size: 1.2rem;
+  }
+  
+  .not-found-page .home-button {
+    padding: 12px 25px;
+    font-size: 1rem;
   }
 }

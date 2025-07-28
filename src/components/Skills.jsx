@@ -13,7 +13,11 @@ import { SiVite } from "react-icons/si";
 import { SiWebpack } from "react-icons/si";
 import { FaLinux } from "react-icons/fa6";
 import { SiHuggingface } from "react-icons/si";
-
+import { SiMongodb } from "react-icons/si";
+import { SiNetlify } from "react-icons/si";
+import { SiRender } from "react-icons/si";
+import { IoLogoVercel } from "react-icons/io5";
+import { CgCloud } from "react-icons/cg";
 
 
 export default function Skills(){
@@ -43,9 +47,8 @@ export default function Skills(){
             <SiExpress /><span>Express</span>
             <DiMysql /><span>Mysql</span>
             <FaJs /><span>JavaScript</span>
-            <span>C</span><span></span>
-            <span>C++</span><span></span>
-            <span></span>
+            <SiMongodb /><span>MongoDB</span>
+            <span>&nbsp;&nbsp;C</span><span>C++</span>
 
 
 
@@ -62,6 +65,17 @@ export default function Skills(){
              <SiWebpack /><span>Webpack</span>
              <FaLinux /><span>Linux</span>
              <SiHuggingface /><span>HuggingFace</span>
+             
+
+
+            </div></h3>
+            
+            <h3 className="dep">Deployments <div className="others">
+             <SiNetlify/><span>Netlify</span>
+             <IoLogoVercel /><span>Vercel</span>
+             <SiRender /><span>Render</span>
+             <CgCloud /><span>Gcloud</span>
+             <FaGithub /><span>Github-pages</span>
              
 
 

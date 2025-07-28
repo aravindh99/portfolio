@@ -40,7 +40,7 @@ export default function About() {
         <a href="https://linkedin.com/in/aravindh99" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
           <FaLinkedin />
           </a>
-         <a href="https://instagram.com/one__autumn__leaf" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+         <a href="https://instagram.com/last_autumnleaf" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
         <FaInstagram />
         </a>
        <a href="mailto:arav.naatchu@email.com" aria-label="Email">
