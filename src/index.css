@@ -277,18 +277,87 @@ main {
 
 /* === About Section === */
 .about {
-  gap: 48px;
-  max-width: 850px;
-  background: transparent;
-  box-shadow: none;
+  column-gap: 28px;
+  max-width: 1000px;
   min-width: 260px;
   min-height: 400px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
-  margin-left: 40px;
+  margin-left: 38px;
   margin-bottom: 100px;
-  margin-top: 60px;
+  row-gap: 50px;  
+ 
 }
+.hire{
+  background-color: #dfadad;
+  border-radius: 16px;
+  border: 1px solid #2f1717;
+  width: 190px;
+  margin-left: 30px;
+ }
+
+ .cont {
+  perspective: 800px;
+  grid-column: span 2;
+  justify-self: center;
+  margin-left: -300px;
+  margin-top: 50px;
+}
+
+.cube {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotate 6s infinite linear;
+}
+
+.face {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.front {
+  transform: translateZ(50px);
+}
+
+.back {
+  transform: translateZ(-50px) rotateY(180deg);
+}
+
+.right {
+  transform: rotateY(90deg) translateZ(50px);
+}
+
+.left {
+  transform: rotateY(-90deg) translateZ(50px);
+}
+
+.top {
+  transform: rotateX(90deg) translateZ(50px);
+}
+
+.bottom {
+  transform: rotateX(-90deg) translateZ(50px);
+}
+
+@keyframes rotate {
+  from {
+      transform: rotateX(0deg) rotateY(0deg);
+  }
+  to {
+      transform: rotateX(360deg) rotateY(360deg);
+  }
+}
+
+
+
+
 
 .ara-img-stack {
   position: relative;
@@ -323,6 +392,7 @@ main {
   align-items: flex-start;
   justify-content: center;
   margin-top: 100px;
+  grid-column: span 2;
 }
 .abt h2 {
   font-size: 2.2rem;
@@ -713,7 +783,7 @@ margin-left: 40px;
 /* === NEW Floating AI Chat Styles === */
 .floating-ai-chat-new {
   position: fixed;
-  bottom: 40px;
+  bottom: 100px;
   right: 100px;
   width: 380px;
   max-width: 98vw;
@@ -1287,4 +1357,92 @@ header, .side-nav {
     padding: 12px 25px;
     font-size: 1rem;
   }
+}
+
+.app-root.light .face {
+  background: rgba(24, 25, 26, 0.13) !important;
+  border: 1.5px solid rgba(24, 25, 26, 0.18) !important;
+  box-shadow: 0 4px 24px 0 rgba(24,25,26,0.08) !important;
+  backdrop-filter: blur(6px) !important;
+}
+.app-root:not(.light) .face {
+  background: rgba(255, 255, 255, 0.13) !important;
+  border: 1.5px solid rgba(255,255,255,0.18) !important;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08) !important;
+  backdrop-filter: blur(6px) !important;
+}
+
+.app-root.light .hire {
+  background: var(--nav-link-color-light) !important;
+  color: var(--skill-bg-light) !important;
+}
+.app-root:not(.light) .hire {
+  background: var(--nav-link-color-dark) !important;
+  color: var(--skill-bg-dark) !important;
+}
+.hire:active {
+  filter: brightness(0.85);
+}
+
+.summon-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.summon-modal {
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(12px);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  padding: 36px 32px 28px 32px;
+  min-width: 320px;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1.5px solid rgba(255,255,255,0.25);
+}
+.summon-modal-message {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: var(--nav-link-color);
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+.summon-modal-actions {
+  display: flex;
+  gap: 18px;
+}
+.summon-modal-btn {
+  background: var(--nav-link-color);
+  color: var(--skill-bg);
+  border: none;
+  border-radius: 10px;
+  padding: 10px 22px;
+  font-size: 1.08rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.18s, color 0.18s, filter 0.18s;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.08);
+}
+.app-root.light .summon-modal {
+  background: rgba(248,239,212,0.95);
+  color: #18191a;
+}
+.app-root.light .summon-modal-btn {
+  background: var(--nav-link-color-light);
+  color: var(--skill-bg-light);
+}
+.app-root:not(.light) .summon-modal-btn {
+  background: var(--nav-link-color-dark);
+  color: var(--skill-bg-dark);
+}
+.summon-modal-btn:hover {
+  filter: brightness(0.92);
 }

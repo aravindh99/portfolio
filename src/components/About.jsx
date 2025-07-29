@@ -9,13 +9,20 @@ import { FaWhatsapp } from "react-icons/fa";
 
 export default function About() {
   const [showFirst, setShowFirst] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
- 
+  // Play sword sound and show modal
+  const handleHireClick = () => {
+    const audio = new Audio('/sword.mp3');
+    audio.play();
+    setShowModal(true);
+  };
+
+  const closeModal = () => setShowModal(false);
 
   return (
    <>
     <div className='about'>
-      
       <div
         className="ara-img-stack"
         onMouseEnter={() => setShowFirst(false)}
@@ -54,7 +61,40 @@ export default function About() {
         <p>Building fast, accessible web apps with React and Express. 
           Focused on clean code, smooth user experiences, and performance-first design.</p>
       </div>
+      <button className='hire' onClick={handleHireClick}>Hire Me!</button>
+      <div className="cont">
+        <div className="cube">
+            <div className="face front"></div>
+            <div className="face back"></div>
+            <div className="face right"></div>
+            <div className="face left"></div>
+            <div className="face top"></div>
+            <div className="face bottom"></div>
+        </div>
+      </div>
     </div>
+    {showModal && (
+      <div className="summon-modal-overlay" onClick={closeModal}>
+        <div className="summon-modal" onClick={e => e.stopPropagation()}>
+          <div className="summon-modal-message">⚔️ you have summoned aravindh! ⚔️</div>
+          <div className="summon-modal-actions">
+            <a
+              href={
+                "mailto:arav.naatchu@gmail.com" +
+                "?subject=" + encodeURIComponent("Opportunity for Full Stack Developer") +
+                "&body=" + encodeURIComponent(
+                  `Hi Aravindh,%0D%0A%0D%0AWe are impressed by your portfolio and would like to discuss a potential opportunity with you. Please let us know your availability for a call or interview.%0D%0A%0D%0ARegards,%0D%0A[Your Name]%0D%0A[Company]`
+                )
+              }
+              className="summon-modal-btn"
+            >
+              Send Email
+            </a>
+            <button className="summon-modal-btn" onClick={closeModal}>Close</button>
+          </div>
+        </div>
+      </div>
+    )}
     </>
   )
 }
