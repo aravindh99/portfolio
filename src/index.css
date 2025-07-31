@@ -305,6 +305,28 @@ main {
   margin-top: 50px;
 }
 
+@media (max-width: 700px){
+ 
+  .about {
+    grid-template-columns: 1fr 1fr;
+    
+  }
+  .cont{
+   margin-left: 2px;
+   margin-bottom: 30px;
+  }
+  .hire{
+  justify-self: center;
+  }
+  .abt{
+    margin-left: 20px;
+  }
+  .ara-img-stack{
+    margin-left: 20px;
+  }
+
+}
+
 .cube {
   width: 100px;
   height: 100px;
