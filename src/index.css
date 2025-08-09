@@ -1,5 +1,4 @@
-/* === Font Import & Variables === */
-@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@700;800&display=swap');
+/* === Font Variables === */
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -12,6 +11,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --header-height: 80px;
   --logo-gradient1: #f8efd4;
   --logo-gradient2: #b0b0b0;
   --logo-gradient3: #f8efd4;
@@ -117,7 +117,7 @@ header {
   align-items: center;
   justify-content: space-between;
   gap: 0;
-  height: 80px;
+  height: var(--header-height);
   min-height: 60px;
   width: 100%;
   background: transparent;
@@ -128,7 +128,7 @@ header {
 
 .main-content {
   display: flex;
-  margin-top: 100px;
+  margin-top: var(--header-height);
   width: 100%;
   box-sizing: border-box;
 }
@@ -141,11 +141,7 @@ main {
 /* === Header Nav (Horizontal) === */
 
 
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-}
+/* removed unused .header-right */
 
 .logo-container {
   display: inline-flex;
@@ -284,7 +280,7 @@ main {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
-  margin-left: 38px;
+  margin-left: 0;
   margin-bottom: 100px;
   row-gap: 50px;  
  
@@ -312,7 +308,8 @@ main {
     
   }
   .cont{
-   margin-left: 2px;
+   margin-left: 0;
+   justify-self: center;
    margin-bottom: 30px;
   }
   .hire{
@@ -436,64 +433,79 @@ main {
 .about-icons svg {
   color: var(--icon-color);
   font-size: var(--icon-size);
-  transition: color 0.2s, font-size 0.2s;
+  transition: color 0.2s, font-size 0.2s, transform 0.2s;
   cursor: pointer;
 }
 .about-icons svg:hover {
   font-size: 2.5rem;
+  transform: translateY(-2px) scale(1.18) rotateZ(-2deg);
 }
 
 .skill-sec{
-  min-height: calc(100vh - 112px);
+  min-height: calc(100vh - (var(--header-height) + 32px));
   padding-top: 10px;
-  padding-left: 20px;
+  padding-left: 0;
 }
 
 .skillsHeading {
   text-align: start;
   margin-bottom: 2rem;
   margin-top: 50px;
-  margin-left: 20px;
+  margin-left: 0;
 }
 
-.skillWrap {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 32px;
-  justify-content: center;
-  align-items: flex-start;
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 18px;
+  align-items: stretch;
   background: transparent;
   border-radius: 18px;
-  padding: 32px 24px;
-  max-width: 900px;
+  padding: 16px 8px;
+  max-width: 1000px;
   margin: 0 auto 48px auto;
-  box-shadow: none;
 }
 
-.skillWrap h3 {
-  flex: 1 1 220px;
-  min-width: 220px;
-  margin: 0 12px 0 0;
-  font-size: 1.25rem;
-  color: var(--nav-link-color);
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  background: transparent;
-}
+/* removed legacy .skillWrap heading styles */
 
-.frontEnd, .backEnd, .others {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(80px, 1fr));
-  gap: 18px 12px;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+.skillCard {
   background: var(--skill-bg);
   border-radius: 16px;
   box-shadow: 0 2px 12px 0 rgba(0,0,0,0.08);
-  padding: 24px 18px;
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
 }
 
-.frontEnd svg, .backEnd svg, .others svg {
+.skillCard .skillList { flex: 1; }
+
+.skillCard .skillList:after {
+  content: "";
+  display: block;
+  height: 0;
+}
+
+.skillCardTitle {
+  margin: 0 0 10px 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--nav-link-color);
+}
+
+.skillList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px 10px;
+}
+
+.skillItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.skillItem svg {
   font-size: 2.1rem;
   color: var(--nav-link-color);
   vertical-align: middle;
@@ -501,14 +513,14 @@ main {
   transition: color 0.2s, transform 0.2s;
 }
 
-.frontEnd span, .backEnd span, .others span {
+.skillItem span {
   font-size: 1.08rem;
   color: var(--nav-link-color);
   vertical-align: middle;
   margin-right: 8px;
 }
 
-.frontEnd svg:hover, .backEnd svg:hover, .others svg:hover {
+.skillItem svg:hover {
   color: #64ffda;
   transform: scale(1.18);
 }
@@ -543,12 +555,11 @@ main {
 /* === Experience Section === */
 .experience-section {
   max-width: 850px;
-  margin: 0 auto 64px auto;
   padding: 32px 24px;
   background: transparent;
   box-shadow: none;
   min-width: 300px;
-  min-height: calc(100vh - 112px);
+  min-height: calc(100vh - (var(--header-height) + 32px));
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -579,10 +590,29 @@ main {
   flex-direction: column;
   gap: 10px;
   position: relative;
+  overflow: hidden;
+  isolation: isolate;
 }
 .experience-card:hover {
   box-shadow: 0 6px 24px 0 rgba(0,0,0,0.13);
   transform: translateY(-2px) scale(1.012);
+}
+
+/* Subtle animated gradient ring around cards */
+.project-card::before, .experience-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 18px;
+  background: conic-gradient(from 0deg, #64ffda33, transparent 25%, #a78bfa33, transparent 50%, #64ffda33);
+  filter: blur(12px);
+  opacity: 0;
+  transition: opacity .25s ease, transform .25s ease;
+  z-index: -1;
+}
+.project-card:hover::before, .experience-card:hover::before {
+  opacity: .9;
+  transform: scale(1.02);
 }
 
 .experience-title {
@@ -630,21 +660,13 @@ main {
   margin-top: 0.2rem;
 }
 
-.projectSec{
-min-height: calc(90vh-100px);
-margin-left: 40px;
-}
-
-.projectSec > h2{
-  font-size: 2rem;
- 
-}
+/* Removed earlier .projectSec duplicate (consolidated below) */
 
 /* === Projects Section === */
 .projectSec {
-  min-height: calc(100vh - 112px);
-  margin-left: 40px;
-  max-width: 900px;
+  min-height: calc(100vh - (var(--header-height) + 32px));
+  margin-left: 0;
+  max-width: 850px;
   padding: 32px 24px;
   display: flex;
   flex-direction: column;
@@ -669,10 +691,13 @@ margin-left: 40px;
   flex-direction: column;
   gap: 10px;
   position: relative;
+  overflow: hidden;
+  isolation: isolate;
 }
 .project-card:hover {
   box-shadow: 0 6px 24px 0 rgba(0,0,0,0.13);
-  transform: translateY(-2px) scale(1.012);
+  transform: translateY(-2px) scale(1.012) rotateX(0.6deg) rotateY(-0.6deg);
+  transform-style: preserve-3d;
 }
 
 .project-title-row {
@@ -698,6 +723,23 @@ margin-left: 40px;
 .project-title-row a:hover {
   color: var(--icon-color);
   transform: scale(1.18);
+}
+
+/* Animated underline for project links */
+.project-title-row a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #64ffda, #a78bfa);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .25s ease;
+}
+.project-title-row a:hover::after {
+  transform: scaleX(1);
 }
 
 .project-desc {
@@ -805,9 +847,9 @@ margin-left: 40px;
 /* === NEW Floating AI Chat Styles === */
 .floating-ai-chat-new {
   position: fixed;
-  bottom: 100px;
-  right: 100px;
-  width: 380px;
+  bottom: 32px;
+  right: 32px;
+  width: 360px;
   max-width: 98vw;
   background: none;
   box-shadow: none;
@@ -821,6 +863,8 @@ margin-left: 40px;
   transform: translateY(40px);
   transition: opacity 0.6s cubic-bezier(.68,-0.55,.27,1.55), transform 0.6s cubic-bezier(.68,-0.55,.27,1.55);
   pointer-events: auto;
+  max-height: 70vh;
+  overflow: hidden;
 }
 .floating-ai-chat-new.visible {
   opacity: 1;
@@ -854,9 +898,9 @@ margin-left: 40px;
   border: 1px solid #444;
 }
 .ai-chat-input-new:focus {
-  outline: none !important;
-  border-color: #ccc !important;
-  box-shadow: none !important;
+  outline: none;
+  border-color: #ccc;
+  box-shadow: none;
 }
 .ai-chat-send-new {
   background: #18191a;
@@ -908,6 +952,8 @@ margin-left: 40px;
   animation: fadein 0.5s;
   overflow-wrap: anywhere;
   margin-top: 0;
+  max-height: 40vh;
+  overflow: auto;
 }
 @keyframes fadein {
   from { opacity: 0; }
@@ -922,13 +968,9 @@ header, .side-nav {
   z-index: 100;
 }
 
-/* Remove old .Ai margin-top rule */
-.Ai {
-  margin-top: 0 !important;
-}
+/* removed unused .Ai rule */
 
-/* Remove/override old side-nav styles */
-.side-nav { display: none !important; }
+/* removed unused .side-nav rule */
 
 .fixed-header {
   position: fixed;
@@ -945,21 +987,9 @@ header, .side-nav {
   backdrop-filter: none;
 }
 
-.theme-toggle {
-  font-size: 2rem;
-  background: none;
-  border: none;
-  box-shadow: none;
-  outline: none;
-  color: inherit;
-  cursor: pointer;
-  transition: color 0.2s;
-  margin: 0;
-}
+/* Removed duplicate .theme-toggle definition below (earlier detailed rules kept above) */
 
-.main-content {
-  margin-top: 80px;
-}
+.main-content { margin-top: var(--header-height); }
 
 .section-heading {
   font-size: 2.2rem;
@@ -970,75 +1000,27 @@ header, .side-nav {
   margin-top: 0;
 }
 
-/* --- Responsive Layout for All Components --- */
-@media (max-width: 900px) {
-  header {
-    padding: 0 8px;
-    height: 60px;
-    min-height: 48px;
-  }
-  .main-content, main {
-    padding: 0 4px !important;
-    margin-top: 60px !important;
-  }
-  .about, .projectSec, .experience-section, .skillWrap {
-    padding: 12px 4px !important;
-    margin: 0 !important;
-    max-width: 100vw !important;
-  }
-  .logo-container {
-    font-size: 20px;
-  }
-  .theme-toggle {
-    font-size: 1.4rem;
-    width: 1.8rem;
-    height: 1.8rem;
-  }
-  .ai-chat-avatar-new {
-    width: 56px;
-    height: 56px;
-    margin-right: 10px;
-  }
-  .ai-chat-response-new {
-    font-size: 0.98rem;
-    max-width: 90vw;
-  }
-  .ai-chat-form-new {
-    gap: 4px;
-  }
-  .ai-chat-send-new {
-    font-size: 0.98rem;
-    padding: 0.5em 0.8em;
-  }
-  .ai-chat-input-new {
-    font-size: 0.98rem;
-    max-width: 140px;
-  }
-  .abt h2, .section-heading {
-    font-size: 1.4rem;
-  }
-  .abt p {
-    font-size: 1rem;
-  }
-  .about-icons svg {
-    font-size: 1.4rem;
-  }
+/* Fluid typography for key headings */
+.section-heading, .experience-heading, .abt h2 {
+  font-size: clamp(1.3rem, 1.1rem + 1.5vw, 2.2rem);
 }
 
+/* --- Responsive Layout for All Components --- */
 @media (max-width: 1200px) {
+  :root { --header-height: 44px; }
   header {
     padding: 0 2px;
-    height: 44px;
+    height: var(--header-height);
     min-height: 36px;
   }
   .main-content, main {
     padding: 0 2px !important;
-    margin-top: 44px !important;
+    margin-top: var(--header-height) !important;
   }
   .main-content {
     padding-bottom: 120px !important;
   }
-  .about, .projectSec, .experience-section, .skillWrap {
+  .about, .projectSec, .experience-section, .skillsGrid {
     padding: 6px 2px !important;
     margin: 0 !important;
     max-width: 100vw !important;
@@ -1052,17 +1034,18 @@ header, .side-nav {
     height: 1.2rem;
   }
   .floating-ai-chat-new {
-    position: fixed !important;
-    right: 0 !important;
-    left: 0 !important;
-    bottom: 0 !important;
-    width: 100vw !important;
-    max-width: 100vw !important;
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    max-width: 100vw;
     border-radius: 18px 18px 0 0;
     background: rgba(24, 25, 26, 0.98);
     box-shadow: 0 -2px 16px 0 rgba(0,0,0,0.18);
     padding: 8px 4px 4px 4px;
     z-index: 1001;
+    max-height: 50vh;
   }
   .ai-chat-avatar-new {
     width: 44px;
@@ -1096,9 +1079,70 @@ header, .side-nav {
   }
 }
 
-.dep{
-  max-width: fit-content;
+@media (max-width: 900px) {
+  :root { --header-height: 60px; }
+  header {
+    padding: 0 8px;
+    height: var(--header-height);
+    min-height: 48px;
+  }
+  .main-content, main {
+    padding: 0 4px !important;
+    margin-top: var(--header-height) !important;
+  }
+  .about, .projectSec, .experience-section, .skillsGrid {
+    padding: 12px 4px !important;
+    margin: 0 !important;
+    max-width: 100vw !important;
+  }
+  .logo-container {
+    font-size: 20px;
+  }
+  .theme-toggle {
+    font-size: 1.4rem;
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+  .ai-chat-avatar-new {
+    width: 56px;
+    height: 56px;
+    margin-right: 10px;
+  }
+  .ai-chat-response-new {
+    font-size: 0.98rem;
+    max-width: 90vw;
+  }
+  .ai-chat-form-new {
+    gap: 4px;
+  }
+  .ai-chat-send-new {
+    font-size: 0.98rem;
+    padding: 0.5em 0.8em;
+  }
+  .ai-chat-input-new {
+    font-size: 0.98rem;
+    max-width: 140px;
+  }
+  .abt h2, .section-heading, .skillCardTitle {
+    font-size: 1.4rem;
+  }
+  .abt p {
+    font-size: 1rem;
+  }
+  .about-icons svg, .skillItem svg {
+    font-size: 1.4rem;
+  }
 }
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* removed unused .dep */
 
 /* === 404 Page Styles === */
 .not-found-page {
@@ -1301,7 +1345,7 @@ header, .side-nav {
   }
 }
 
-/* Particle effect */
+
 .not-found-page .particles {
   position: absolute;
   top: 0;
@@ -1382,25 +1426,25 @@ header, .side-nav {
 }
 
 .app-root.light .face {
-  background: rgba(24, 25, 26, 0.13) !important;
-  border: 1.5px solid rgba(24, 25, 26, 0.18) !important;
-  box-shadow: 0 4px 24px 0 rgba(24,25,26,0.08) !important;
-  backdrop-filter: blur(6px) !important;
+  background: rgba(24, 25, 26, 0.13);
+  border: 1.5px solid rgba(24, 25, 26, 0.18);
+  box-shadow: 0 4px 24px 0 rgba(24,25,26,0.08);
+  backdrop-filter: blur(6px);
 }
 .app-root:not(.light) .face {
-  background: rgba(255, 255, 255, 0.13) !important;
-  border: 1.5px solid rgba(255,255,255,0.18) !important;
-  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08) !important;
-  backdrop-filter: blur(6px) !important;
+  background: rgba(255, 255, 255, 0.13);
+  border: 1.5px solid rgba(255,255,255,0.18);
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
+  backdrop-filter: blur(6px);
 }
 
 .app-root.light .hire {
-  background: var(--nav-link-color-light) !important;
-  color: var(--skill-bg-light) !important;
+  background: var(--nav-link-color-light);
+  color: var(--skill-bg-light);
 }
 .app-root:not(.light) .hire {
-  background: var(--nav-link-color-dark) !important;
-  color: var(--skill-bg-dark) !important;
+  background: var(--nav-link-color-dark);
+  color: var(--skill-bg-dark);
 }
 .hire:active {
   filter: brightness(0.85);

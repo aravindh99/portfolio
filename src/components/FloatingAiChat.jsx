@@ -9,7 +9,7 @@ const INITIAL_PROMPT = "Hey there! I'm Aravindh's virtual sidekick 😉. Curious
 
 // Hugging Face API details
 const HF_API_TOKEN = import.meta.env.VITE_HF_API_TOKEN;
-const SYSTEM_PROMPT = `You are an AI assistant for Aravindh's portfolio website.Limit your answers to 1 short sentence only, unless absolutely necessary.If question is hi:
+const SYSTEM_PROMPT = `You are an AI assistant for Aravindh's portfolio website. Limit your answers to 1 short sentence only, unless absolutely necessary. If question is hi:
 reply:
 hey hey 👋 how's it going?
 Or:
@@ -106,7 +106,7 @@ export default function FloatingAiChat() {
   const catImg = theme === "light" ? catWebp : cat1Webp;
 
   return (
-    <div className={`floating-ai-chat-new${showMain ? " visible" : ""}`}>
+    <div className={`floating-ai-chat-new${showMain ? " visible" : ""}`} aria-live="polite">
       <form className="ai-chat-form-new" onSubmit={askBot} autoComplete="off">
         <input
           ref={inputRef}

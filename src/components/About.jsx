@@ -14,7 +14,8 @@ export default function About() {
   // Play sword sound and show modal
   const handleHireClick = () => {
     const audio = new Audio('/sword.mp3');
-    audio.play();
+    // Avoid blocking on some browsers; ignore play() promise rejection
+    audio.play().catch(() => {});
     setShowModal(true);
   };
 

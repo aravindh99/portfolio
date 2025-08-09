@@ -13,7 +13,7 @@ export default function Experience() {
       employmentType: "Internship",
       company: "RheinBrücke IT Consulting",
       date: "May 2019 – August 2019",
-      location: "chennai",
+      location: "Chennai, Tamil Nadu, India",
       description: "Worked on real-world IT projects, gaining hands-on experience in software development and consulting."
     }
   ];

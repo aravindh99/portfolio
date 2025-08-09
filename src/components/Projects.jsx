@@ -2,12 +2,12 @@ import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
 const projects = [
   {
-    name: "School scoop",
+    name: "School Scoop",
     github: "https://github.com/aravindh99/school",
     live: "https://schoolscoop.vercel.app", 
     description:
       "School Scoop is a web application where students can anonymously share stories, confessions, rumors, and secrets about their school life. Post messages to crushes, enemies, or just share what's happening in your school - all completely anonymous!",
-    stack: ["React", "Node.js", "Express", "MongoDB", "React-router","render","vercel"],
+    stack: ["React", "Node.js", "Express", "MongoDB", "React Router", "Render", "Vercel"],
     
   },
   {
@@ -15,8 +15,8 @@ const projects = [
     github: "https://github.com/aravindh99/auth",
     live: "", // placeholder
     description:
-      "A production-ready authentication microservice built in Go. Supports sign up, login, password reset, and token-based auth. Designed for easy integration with any app.",
-    stack: ["React", "Express", "Rechart", "Mysql", "SMTP","JWT token"],
+      "A production-ready authentication microservice. Supports sign up, login, password reset, and token-based auth.",
+    stack: ["Go", "React", "Express", "Recharts", "MySQL", "SMTP", "JWT"],
   
   },
   {
@@ -25,7 +25,7 @@ const projects = [
     live: "", // placeholder
     description:
       "A full-stack billing and invoice management app. Features user authentication, bill creation, and management. Separate frontend and backend repos.",
-    stack: ["React", "Node.js", "Express", "MySQL", "Prisma", "React-Pdf"],
+    stack: ["React", "Node.js", "Express", "MySQL", "Prisma", "react-pdf"],
 
   }
 ];
@@ -88,7 +88,6 @@ export default function Projects() {
         {clientProjects.map((proj, idx) => (
           <a className="project-link-card" href={proj.url} target="_blank" rel="noopener noreferrer" key={idx}>
             {proj.name}
-     
           </a>
         ))}
       </div>
