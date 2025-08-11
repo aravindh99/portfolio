@@ -112,7 +112,7 @@ export default function FloatingAiChat() {
           ref={inputRef}
           value={question}
           onChange={e => setQuestion(e.target.value)}
-          placeholder="Ask me anything about Aravindh…"
+          placeholder="hi..."
           className="ai-chat-input-new"
           autoComplete="off"
           disabled={inputDisabled}

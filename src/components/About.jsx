@@ -59,8 +59,7 @@ export default function About() {
          </a>
         </div>
         <h2>Full Stack Developer</h2>
-        <p>Building fast, accessible web apps with React and Express. 
-          Focused on clean code, smooth user experiences, and performance-first design.</p>
+        <p>Full-stack developer obsessed with building high-performance, accessible web apps using React, Express, and bleeding-edge technologies. I merge clean, scalable code with seamless user experiences — from micro-optimizations to WASM-powered features — to create products that stand out. Always learning, always shipping, aiming for world-class engineering teams.</p>
       </div>
       <button className='hire' onClick={handleHireClick}>Hire Me!</button>
       <div className="cont">
