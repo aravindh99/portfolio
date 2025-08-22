@@ -3,8 +3,8 @@ export default function Experience() {
     {
       title: "Web Development Team Lead",
       employmentType: "Full-time",
-      company: "XTown",
-      date: "May 2025 – Present",
+      company: "Xtown",
+      date: "OCT 2024 – Present",
       location: "Coimbatore, Tamil Nadu, India (On-site)",
       description: "Leading the web development team at XTown, overseeing full-stack projects and mentoring junior developers.",
       url: "https://xtown.in"
@@ -15,7 +15,7 @@ export default function Experience() {
       company: "RheinBrücke IT Consulting",
       date: "May 2019 – August 2019",
       location: "Chennai, Tamil Nadu, India",
-      description: "Worked on real-world IT projects, gaining hands-on experience in software development and consulting.",
+      description: "Worked on real-world IT projects (C#), gaining hands-on experience in software development and consulting.",
       url: "https://www.rheincs.com/"
     }
   ];

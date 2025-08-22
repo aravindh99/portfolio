@@ -20,7 +20,7 @@ const projects = [
   },{
     name: "Auth Service",
     github: "https://github.com/aravindh99/auth",
-    live: "", // placeholder
+    live: "https://auth-five-azure.vercel.app/", // placeholder
     description:
       "A production-ready authentication microservice. Supports sign up, login, password reset, and token-based auth. Chart view dashboard for super admin and projects and users statistics.",
     stack: [ "React", "Express", "Recharts", "MySQL", "SMTP", "JWT"],
@@ -29,7 +29,7 @@ const projects = [
   {
     name: "Billing App ",
     github: "https://github.com/aravindh99/bill-back",
-    live: "", // placeholder
+    live: "https://bill-front-beta.vercel.app/", // placeholder
     description:
       "A full-stack billing and invoice management app. Features user authentication, bill creation, and management.",
     stack: ["React", "Node.js", "Express", "MySQL", "Prisma", "react-pdf"],
