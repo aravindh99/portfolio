@@ -1,275 +1,153 @@
-// Projects carousel with 3D peek and drag/swipe
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const projects = [
+  // --- New / Active ---
+  {
+    name: "IntuitionX",
+    live: "https://app.intuitionx.ai/",
+    description: "Voice-first AI edtech platform for UK students. Features real-time speech-to-speech interaction.",
+    stack: ["Next.js", "NestJS", "Three.js", "Microservices", "Nuetts-air", "TailwindCSS", "Gemini API"],
+  },
+  {
+    name: "VA ERP",
+    live: "https://va-erp.xtown.in/",
+    description: "Comprehensive ERP for Venkateshwara Associates covering attendance, inventory, production, and reporting.",
+    stack: ["React", "Express", "MySQL", "Recharts"],
+  },
+  {
+    name: "Prithvi CMS",
+    live: "https://pscms.prithviinnerwears.com/",
+    description: "Canteen Management System kiosk PWA with thermal printer integration and UPI payments.Admin dashboard with clear charts.",
+    stack: ["React", "PWA", "Razorpay", "Node.js"],
+  },
+  {
+    name: "Kiddo Shadow",
+    description: "Multi-tenant school management platform (Ongoing). RAG workflows, PWA-first.",
+    stack: ["React", "Express", "GraphQL", "Redis", "Microservices", "Gemini API", "PostgreSQL", "SQLite"],
+  },
+  // --- Sites ---
+  {
+    name: "Kiro",
+    live: "https://necromaniac.vercel.app/",
+    description: "3D immersive horror experience built with React Three Fiber.",
+    stack: ["React", "Three.js", "kiro"],
+  },
+  {
+    name: "VHI Drills",
+    live: "https://www.vhidrills.com/",
+    description: "Corporate website for Venkateswara Borewells.",
+    stack: ["React", "Vite", "Tailwind CSS"],
+  },
+  {
+    name: "RiaxPrime",
+    live: "https://www.riaxprime.xyz/",
+    description: "Lightweight business website for a digital agency, optimized for speed and SEO.",
+    stack: ["HTML", "CSS", "JavaScript"],
+  },
+  {
+    name: "Bharathi Center",
+    live: "https://bharathi-beta.vercel.app/",
+    description: "Service center application for Xerox/Printing services with Tamil language support.",
+    stack: ["React", "Tailwind CSS", "Vite"],
+  },
+  {
+    name: "CareerTech Pro",
+    live: "https://careertech-pro.vercel.app/",
+    description: "Educational platform offering career guidance and tech courses.",
+    stack: ["React", "Vite", "Tailwind CSS"],
+  },
+  // --- Old Projects ---
   {
     name: "VanLife",
     github: "https://github.com/aravindh99/vanlife",
     live: "https://vanlife-ruby-tau.vercel.app/",
-    description: "Van rental web app with host dashboard. Firebase Firestore for data; MirageJS for auth in dev.",
-    stack: ["React", "Vite", "Firebase Firestore"],
-    deploy: { frontend: "Vercel", backend: "Firebase/MirageJS (mock)", database: "Firebase Firestore" }
+    description: "Van rental web app with host dashboard.",
+    stack: ["React", "Vite", "Firebase"],
   },
   {
     name: "Job Board",
     github: "https://github.com/aravindh99/job",
     live: "https://job-chi-gold.vercel.app/",
-    description: "Full‑stack job board to browse listings, view details, and post new jobs with validation.",
-    stack: ["React", "Vite", "Node.js", "Express", "MongoDB", "Mongoose"],
-    deploy: { frontend: "Vercel", backend: "Render", database: "MongoDB Atlas" }
-  },{
+    description: "Full‑stack job board with listings and validation.",
+    stack: ["React", "Node.js", "MongoDB"],
+  },
+  {
     name: "Auth Service",
     github: "https://github.com/aravindh99/auth",
-    live: "https://auth-five-azure.vercel.app/", // placeholder
-    description:
-      "A production-ready authentication microservice. Supports sign up, login, password reset, and token-based auth. Chart view dashboard for super admin and projects and users statistics.",
-    stack: [ "React", "Express", "Recharts", "MySQL", "SMTP", "JWT"],
-    deploy: { frontend: "TBD", backend: "TBD", database: "MySQL" }
+    live: "https://auth-five-azure.vercel.app/",
+    description: "Production-ready auth microservice with JWT & SMTP.",
+    stack: ["React", "Express", "MySQL", "JWT"],
   },
   {
-    name: "Billing App ",
+    name: "Billing App",
     github: "https://github.com/aravindh99/bill-back",
-    live: "https://bill-front-beta.vercel.app/", // placeholder
-    description:
-      "A full-stack billing and invoice management app. Features user authentication, bill creation, and management.",
-    stack: ["React", "Node.js", "Express", "MySQL", "Prisma", "react-pdf"],
-    deploy: { frontend: "TBD", backend: "TBD", database: "MySQL" }
-
-  },
-  {
-    name: "Todo",
-    github: "https://github.com/aravindh99/todo",
-    live: "https://aravindh99.github.io/todo/",
-    description: "Vanilla JS Todo app with projects and tasks, modal CRUD, and local persistence.",
-    stack: ["JavaScript", "CSS", "HTML", "Webpack"],
-    deploy: { frontend: "GitHub Pages" }
-  },
-  {
-    name: "UI Template",
-    github: "https://github.com/aravindh99/ui-template",
-    live: "",
-    description: "UI starter template with reusable components and responsive layouts (placeholder).",
-    stack: ["HTML", "CSS", "JavaScript"],
-    deploy: { npm:"npm install @aravinth99/ui-template" }
+    live: "https://bill-front-beta.vercel.app/",
+    description: "Full-stack billing and invoice management app.",
+    stack: ["React", "Node.js", "MySQL", "Prisma"],
   },
   {
     name: "School Scoop",
     github: "https://github.com/aravindh99/school",
-    live: "https://schoolscoop.vercel.app", 
-    description:
-      "School Scoop is a web application where students can anonymously share stories, confessions, rumors, and secrets about their school life. Post messages to crushes, enemies, or just share what's happening in your school - all completely anonymous!",
-    stack: ["React","Tailwind Css","Node.js", "Express", "MongoDB"],
-    deploy: { frontend: "Vercel", backend: "Render", database: "MongoDB Atlas" }
-  },
-  {
-    name: "CareerTechPro ",
-    github: "https://github.com/aravindh99/careertechpro",
-    live: "https://www.careertechpro.xyz",
-    description: "Company website and domain setup with clean, fast static pages.",
-    stack: ["HTML", "CSS", "JavaScript"],
-    deploy: { frontend: "netlify", Domain: "GoDaddy" }
-  },
-  {
-    name: "RiaxPrime",
-    github: "https://github.com/aravindh99/riaxprime",
-    live: "https://www.riaxprime.xyz",
-    description: "Lightweight business website with simple navigation and contact links.",
-    stack: ["HTML", "CSS", "JavaScript"],
-    deploy: { frontend: "Netlify", Domain: "GoDaddy" }
-  },
-  {
-    name: "Old Portfolio",
-    github: "https://github.com/aravindh99/portfolio-old",
-    live: "https://portfolio-19302.web.app/",
-    description: "Older personal portfolio built with React and hosted on Firebase.",
-    stack: ["React", "Firebase"],
-    deploy: { frontend: "Firebase Hosting", backend: "None", database: "None" }
-  },
-  {
-    name: "Hangman Game in React ",
-    github: "https://github.com/aravindh99/game",
-    live: "https://game-chi-teal.vercel.app/",
-    description: "A simple hangman game built with React and deployed to Vercel.",
-    stack: ["React19"],
-    deploy: { frontend: "Vercel", backend: "None", database: "None" }
+    live: "https://schoolscoop.vercel.app",
+    description: "Anonymous school confessions platform.",
+    stack: ["React", "Tailwind", "Node.js", "MongoDB"],
   }
 ];
 
 export default function Projects() {
-  const [index, setIndex] = useState(0);
-  const [direction, setDirection] = useState("next");
-  const pointerStartX = useRef(null);
-  const isPointerDown = useRef(false);
-
-  const count = projects.length;
-  const clamp = (i) => ((i % count) + count) % count;
-  const go = (i, dir) => { setDirection(dir); setIndex(clamp(i)); };
-  const next = () => go(index + 1, "next");
-  const prev = () => go(index - 1, "prev");
-
-  useEffect(() => {
-    const onKey = (e) => {
-      if (e.key === 'ArrowRight') next();
-      if (e.key === 'ArrowLeft') prev();
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [index]);
-
-  const onPointerDown = (e) => {
-    isPointerDown.current = true;
-    pointerStartX.current = e.clientX ?? (e.touches && e.touches[0]?.clientX) ?? 0;
-  };
-  const onPointerMove = () => {
-    if (!isPointerDown.current) return;
-  };
-  const onPointerUp = (e) => {
-    if (!isPointerDown.current) return;
-    const endX = e.clientX ?? (e.changedTouches && e.changedTouches[0]?.clientX) ?? 0;
-    const delta = endX - (pointerStartX.current ?? 0);
-    if (Math.abs(delta) > 40) {
-      delta < 0 ? next() : prev();
-    }
-    isPointerDown.current = false;
-    pointerStartX.current = null;
-  };
-
-  const prevIdx = clamp(index - 1);
-  const nextIdx = clamp(index + 1);
-  const active = projects[index];
-
-  const formatDeploy = (deploy) => {
-    if (!deploy) return null;
-    const labelFor = (key) => {
-      const k = key.toLowerCase();
-      if (k === 'database' || k === 'db') return 'DB';
-      if (k === 'frontend') return 'Frontend';
-      if (k === 'backend') return 'Backend';
-      if (k === 'domain') return 'Domain';
-      return key.charAt(0).toUpperCase() + key.slice(1);
-    };
-    const parts = Object.entries(deploy)
-      .filter(([_, v]) => v && String(v).trim() && !/^tbd$/i.test(String(v)) && !/^none$/i.test(String(v)))
-      .map(([k, v]) => `${labelFor(k)}: ${v}`);
-    if (parts.length === 0) return null;
-    return `Deploy — ${parts.join(' | ')}`;
-  };
-
   return (
-    <section className="projctSec">
-      <h2>Projects</h2>
-      <div
-        className="px-carousel"
-        onMouseDown={onPointerDown}
-        onMouseMove={onPointerMove}
-        onMouseUp={onPointerUp}
-        onMouseLeave={onPointerUp}
-        onTouchStart={onPointerDown}
-        onTouchMove={onPointerMove}
-        onTouchEnd={onPointerUp}
-        role="region"
-        aria-roledescription="carousel"
-        aria-label="Projects"
-      >
-        <button className="px-nav prev" aria-label="Previous" onClick={prev}>‹</button>
-        <div className="px-stage" key={`stage-${index}-${direction}`}>
-          <div className="px-card prev" aria-hidden="true">
-            <div className="px-card-inner">
-              {projects[prevIdx].live || projects[prevIdx].github ? (
-                <a className="px-card-link" href={projects[prevIdx].live || projects[prevIdx].github} target="_blank" rel="noopener noreferrer">
-                  <h3>{projects[prevIdx].name}</h3>
-                  <p>{projects[prevIdx].description}</p>
-                  {projects[prevIdx].stack?.length ? (<p>Stack: {projects[prevIdx].stack.join(', ')}</p>) : null}
-                  {formatDeploy(projects[prevIdx].deploy) ? (
-                    <p>{formatDeploy(projects[prevIdx].deploy)}</p>
-                  ) : null}
-                </a>
-              ) : (
-                <>
-                  <h3>{projects[prevIdx].name}</h3>
-                  <p>{projects[prevIdx].description}</p>
-                  {projects[prevIdx].stack?.length ? (<p>Stack: {projects[prevIdx].stack.join(', ')}</p>) : null}
-                  {formatDeploy(projects[prevIdx].deploy) ? (
-                    <p>{formatDeploy(projects[prevIdx].deploy)}</p>
-                  ) : null}
-                </>
-              )}
-              <div className="project-buttons">
-                {projects[prevIdx].github ? (
-                  <a href={projects[prevIdx].github} target="_blank" rel="noopener noreferrer" className="project-btn github-btn">GitHub</a>
-                ) : null}
-                {projects[prevIdx].live ? (
-                  <a href={projects[prevIdx].live} target="_blank" rel="noopener noreferrer" className="project-btn live-btn">Live</a>
-                ) : null}
-              </div>
-            </div>
-          </div>
+    <section className="projctSec fade-in-up" style={{ marginTop: '4rem' }}>
+      <h2 style={{ textAlign: 'center', marginBottom: '3rem' }}>Projects</h2>
 
-          <div className={`px-card active ${direction === 'next' ? 'enter-right' : 'enter-left'}`}>
-            <div className="px-card-inner">
-              {active.live || active.github ? (
-                <a className="px-card-link" href={active.live || active.github} target="_blank" rel="noopener noreferrer">
-                  <h3>{active.name}</h3>
-                  <p>{active.description}</p>
-                  {active.stack?.length ? (<p>Stack: {active.stack.join(', ')}</p>) : null}
-                  {formatDeploy(active.deploy) ? (
-                    <p>{formatDeploy(active.deploy)}</p>
-                  ) : null}
-                </a>
-              ) : (
-                <>
-                  <h3>{active.name}</h3>
-                  <p>{active.description}</p>
-                  {active.stack?.length ? (<p>Stack: {active.stack.join(', ')}</p>) : null}
-                  {formatDeploy(active.deploy) ? (
-                    <p>{formatDeploy(active.deploy)}</p>
-                  ) : null}
-                </>
-              )}
-              <div className="project-buttons">
-                {active.github ? (
-                  <a href={active.github} target="_blank" rel="noopener noreferrer" className="project-btn github-btn">GitHub</a>
-                ) : null}
-                {active.live ? (
-                  <a href={active.live} target="_blank" rel="noopener noreferrer" className="project-btn live-btn">Live</a>
-                ) : null}
-              </div>
-            </div>
-          </div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
+        {projects.map((p, i) => (
+          <div key={i} className="project-item-minimal" style={{
+            padding: '1.5rem',
+            border: '1px solid var(--border)',
+            borderRadius: 'var(--radius-sm)',
+            transition: 'all 0.3s ease',
+            cursor: 'default',
+            position: 'relative',
+            overflow: 'hidden'
+          }}
+            onMouseEnter={e => {
+              e.currentTarget.style.borderColor = 'var(--accent)';
+              e.currentTarget.style.transform = 'translateY(-5px)';
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.borderColor = 'var(--border)';
+              e.currentTarget.style.transform = 'translateY(0)';
+            }}
+          >
+            <h3 style={{ fontSize: '1.4rem', marginBottom: '0.5rem' }}>{p.name}</h3>
+            <p style={{ fontSize: '0.9rem', opacity: 0.8, marginBottom: '1rem', lineHeight: '1.5' }}>{p.description}</p>
 
-          <div className="px-card next" aria-hidden="true">
-            <div className="px-card-inner">
-              {projects[nextIdx].live || projects[nextIdx].github ? (
-                <a className="px-card-link" href={projects[nextIdx].live || projects[nextIdx].github} target="_blank" rel="noopener noreferrer">
-                  <h3>{projects[nextIdx].name}</h3>
-                  <p>{projects[nextIdx].description}</p>
-                  {projects[nextIdx].stack?.length ? (<p>Stack: {projects[nextIdx].stack.join(', ')}</p>) : null}
-                  {formatDeploy(projects[nextIdx].deploy) ? (
-                    <p>{formatDeploy(projects[nextIdx].deploy)}</p>
-                  ) : null}
-                </a>
-              ) : (
-                <>
-                  <h3>{projects[nextIdx].name}</h3>
-                  <p>{projects[nextIdx].description}</p>
-                  {projects[nextIdx].stack?.length ? (<p>Stack: {projects[nextIdx].stack.join(', ')}</p>) : null}
-                  {formatDeploy(projects[nextIdx].deploy) ? (
-                    <p>{formatDeploy(projects[nextIdx].deploy)}</p>
-                  ) : null}
-                </>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.5rem' }}>
+              {p.stack.map(s => (
+                <span key={s} style={{
+                  fontSize: '0.75rem',
+                  padding: '4px 8px',
+                  background: 'rgba(128,128,128,0.1)',
+                  borderRadius: '4px',
+                  color: 'var(--text)'
+                }}>{s}</span>
+              ))}
+            </div>
+
+            <div style={{ display: 'flex', gap: '1rem' }}>
+              {p.live && (
+                <a href={p.live} target="_blank" rel="noopener noreferrer" style={{
+                  color: 'var(--accent)', fontWeight: 'bold', fontSize: '0.9rem'
+                }}>Live Demo →</a>
               )}
-              <div className="project-buttons">
-                {projects[nextIdx].github ? (
-                  <a href={projects[nextIdx].github} target="_blank" rel="noopener noreferrer" className="project-btn github-btn">GitHub</a>
-                ) : null}
-                {projects[nextIdx].live ? (
-                  <a href={projects[nextIdx].live} target="_blank" rel="noopener noreferrer" className="project-btn live-btn">Live</a>
-                ) : null}
-              </div>
+              {p.github && (
+                <a href={p.github} target="_blank" rel="noopener noreferrer" style={{
+                  color: 'var(--text)', opacity: 0.8, fontSize: '0.9rem'
+                }}>GitHub</a>
+              )}
             </div>
           </div>
-        </div>
-        <button className="px-nav next" aria-label="Next" onClick={next}>›</button>
+        ))}
       </div>
     </section>
   );

@@ -1,102 +1,117 @@
-import { FaHtml5 } from "react-icons/fa";
-import { FaCss3Alt } from "react-icons/fa";
-import { FaSass } from "react-icons/fa";
-import { FaJs } from "react-icons/fa";
-import { FaReact } from "react-icons/fa";
-import { SiTypescript, SiOpenai } from "react-icons/si";
-import { RiTailwindCssFill } from "react-icons/ri";
-import { FaNodeJs } from "react-icons/fa";
-import { SiExpress } from "react-icons/si";
-import { DiMysql } from "react-icons/di";
-import { FaGitAlt } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
-import { SiVite } from "react-icons/si";
-import { SiWebpack } from "react-icons/si";
-import { FaLinux } from "react-icons/fa6";
-import { SiHuggingface } from "react-icons/si";
-import { SiC, SiCplusplus } from "react-icons/si";
-import { SiMongodb } from "react-icons/si";
-import { SiNetlify } from "react-icons/si";
-import { SiRender } from "react-icons/si";
-import { IoLogoVercel } from "react-icons/io5";
-import { CgCloud } from "react-icons/cg";
+import { FaHtml5, FaCss3Alt, FaSass, FaJs, FaReact, FaNodeJs, FaGitAlt, FaGithub, FaLinux, FaRust, FaDocker, FaAws, FaFileVideo } from "react-icons/fa6";
+import { SiTypescript, SiOpenai, SiTailwindcss, SiNextdotjs, SiVite, SiExpress, SiNestjs, SiGraphql, SiMysql, SiPostgresql, SiMongodb, SiRedis, SiNginx, SiCaddy, SiFigma, SiRedux, SiJest, SiGithubactions } from "react-icons/si";
+import { DiSqllite } from "react-icons/di";
+import { TbBrandCpp, TbBrandLoom } from "react-icons/tb";
 
-
-export default function Skills(){
+export default function Skills() {
   const categories = [
     {
-      title: 'Front-End',
+      title: 'Languages',
       items: [
-        { Icon: FaHtml5, label: 'HTML' },
-        { Icon: FaCss3Alt, label: 'CSS' },
-        { Icon: FaSass, label: 'SCSS' },
         { Icon: FaJs, label: 'JavaScript' },
         { Icon: SiTypescript, label: 'TypeScript' },
-        { Icon: FaReact, label: 'React' },
-        { Icon: RiTailwindCssFill, label: 'TailwindCSS' },
+        { Icon: FaRust, label: 'Rust' },
+        {
+          Icon: () => (
+            <div style={{
+              fontSize: '1.8rem', fontWeight: 'bold', border: '2px solid currentColor',
+              width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center',
+              borderRadius: '50%'
+            }}>C</div>
+          ),
+          label: 'C'
+        },
       ],
     },
     {
-      title: 'Back-End',
+      title: 'Frontend',
+      items: [
+        { Icon: FaReact, label: 'React' },
+        { Icon: SiNextdotjs, label: 'Next.js' },
+        { Icon: FaHtml5, label: 'HTML5' },
+        { Icon: FaCss3Alt, label: 'CSS3' },
+        { Icon: SiTailwindcss, label: 'Tailwind CSS' },
+      ],
+    },
+    {
+      title: 'Backend & APIs',
       items: [
         { Icon: FaNodeJs, label: 'Node.js' },
         { Icon: SiExpress, label: 'Express' },
+        { Icon: SiNestjs, label: 'NestJS' },
+        { Icon: FaFileVideo, label: 'REST APIs' },
+        { Icon: SiGraphql, label: 'GraphQL' },
+      ],
+    },
+    {
+      title: 'Databases & Caching',
+      items: [
+        { Icon: SiMysql, label: 'MySQL' },
+        { Icon: SiPostgresql, label: 'PostgreSQL' },
         { Icon: SiMongodb, label: 'MongoDB' },
-        { Icon: DiMysql, label: 'MySQL' },
-        { Icon: FaJs, label: 'JavaScript' },
-        { Icon: SiC, label: 'C' },
-        { Icon: SiCplusplus, label: 'C++' },
+        { Icon: DiSqllite, label: 'SQLite' },
+        { Icon: SiRedis, label: 'Redis' },
       ],
     },
     {
-      title: 'AI / ML',
+      title: 'Systems & Infra',
       items: [
-        { Icon: SiHuggingface, label: 'Hugging Face' },
-        { Icon: SiOpenai, label: 'Ollama' },
+        { Icon: FaAws, label: 'AWS' },
+        { Icon: FaDocker, label: 'Docker' },
+        { Icon: SiNginx, label: 'Nginx' },
+        { Icon: SiCaddy, label: 'Caddy' },
+        { Icon: SiGithubactions, label: 'CI/CD' },
       ],
     },
     {
-      title: 'Tools',
+      title: 'AI & Tools',
       items: [
-        { Icon: FaGitAlt, label: 'Git' },
-        { Icon: FaGithub, label: 'GitHub' },
-        { Icon: SiVite, label: 'Vite' },
-        { Icon: SiWebpack, label: 'Webpack' },
-        { Icon: FaLinux, label: 'Linux' },
-      ],
-    },
-    {
-      title: 'Deployments',
-      items: [
-        { Icon: SiNetlify, label: 'Netlify' },
-        { Icon: IoLogoVercel, label: 'Vercel' },
-        { Icon: SiRender, label: 'Render' },
-        { Icon: CgCloud, label: 'Gcloud' },
-        { Icon: FaGithub, label: 'GitHub Pages' },
+        { Icon: SiOpenai, label: 'RAG / MCP' },
+        { Icon: SiFigma, label: 'Figma' },
+        { Icon: FaFileVideo, label: 'Lottie' },
       ],
     },
   ];
 
   return (
-    <div className="skill-sec">
-      <div className="skillsHeading">
-        <h2>Skills & Tools</h2>
+    <div className="skill-sec fade-in-up">
+      <div className="skillsHeading" style={{ marginBottom: '2rem', textAlign: 'center' }}>
+        <h2>Skills & Tech</h2>
       </div>
-      <div className="skillsGrid">
-        {categories.map((cat) => (
-          <div className="skillCard" key={cat.title}>
-            <h3 className="skillCardTitle">{cat.title}</h3>
-            <div className="skillList">
-              {cat.items.map(({ Icon, label }) => (
-                <div className="skillItem" key={`${cat.title}-${label}`}>
-                  <Icon />
-                  <span>{label}</span>
-                </div>
-              ))}
-            </div>
+
+      {categories.map((cat) => (
+        <div key={cat.title} style={{ marginBottom: '3rem' }}>
+          <h3 style={{
+            fontSize: '1.2rem',
+            color: 'var(--accent)',
+            marginBottom: '1rem',
+            borderBottom: '1px solid var(--border)',
+            paddingBottom: '0.5rem',
+            display: 'inline-block'
+          }}>
+            {cat.title}
+          </h3>
+          <div style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '2rem',
+            alignItems: 'center'
+          }}>
+            {cat.items.map(({ Icon, label }) => (
+              <div key={`${cat.title}-${label}`} className="skill-item-minimal" style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '0.5rem',
+                minWidth: '80px'
+              }}>
+                <Icon style={{ fontSize: '2.5rem', opacity: 0.9 }} />
+                <span style={{ fontSize: '0.9rem', opacity: 0.8 }}>{label}</span>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   );
 }
