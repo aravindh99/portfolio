@@ -14,7 +14,7 @@ export default function Experience() {
           <li>Currently architecting and developing <strong>Kiddo Shadow</strong>, a multi-tenant school management and teacher-student productivity platform (RAG-style workflows, PWA-first).</li>
         </ul>
       ),
-      url: "https://va-erp.xtown.in/"
+      url: "https://xtown.in/"
     },
     {
       title: "Freelance Software Engineer",
@@ -28,7 +28,7 @@ export default function Experience() {
           <li>Operates entirely through voice commands—allowing users to speak naturally and receive intelligent, spoken responses in real time.</li>
         </ul>
       ),
-      url: "https://app.intuitionx.ai/"
+      url: "https://noukha.in/"
     },
     {
       title: "Software Intern",
@@ -42,7 +42,7 @@ export default function Experience() {
           <li>Gained hands-on exposure to enterprise software solutions.</li>
         </ul>
       ),
-      url: ""
+      url: "https://www.rheincs.com/"
     }
   ];
 

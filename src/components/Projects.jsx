@@ -52,7 +52,7 @@ const projects = [
   },
   {
     name: "CareerTech Pro",
-    live: "https://careertech-pro.vercel.app/",
+    live: "https://www.careertechpro.xyz/",
     description: "Educational platform offering career guidance and tech courses.",
     stack: ["React", "Vite", "Tailwind CSS"],
   },
