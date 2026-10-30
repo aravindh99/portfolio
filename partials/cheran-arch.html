@@ -1,0 +1,30 @@
+<div class="project-deepdive-panel" id="deepdive-cheran">
+  <div class="deepdive-header">
+    <div class="deepdive-title-wrap">
+      <span class="deepdive-tag">ARCH_SPEC // 02</span>
+      <h4 class="deepdive-title">Cheran Groups ERP — Relational Schema & State Machine</h4>
+    </div>
+    <button type="button" class="deepdive-close-btn" onclick="document.getElementById('deepdive-cheran').remove()" aria-label="Close architecture breakdown">
+      [close ✕]
+    </button>
+  </div>
+  
+  <div class="deepdive-grid">
+    <div class="deepdive-block">
+      <h5>Strict Transactional Integrity</h5>
+      <p>Multi-stage inventory mutations managed with PostgreSQL SERIALIZABLE transactions and row locking, preventing double-allocation and stock discrepancy during peak production shifts.</p>
+    </div>
+    <div class="deepdive-block">
+      <h5>Work-in-Progress (WIP) State Machine</h5>
+      <p>Formal state transitions for shop-floor job cards, tracking raw materials consumption through intermediate processing to finished goods dispatch.</p>
+    </div>
+    <div class="deepdive-block">
+      <h5>Query & Index Optimization</h5>
+      <p>Composite indexing on composite entity keys and materialized views for operational rollups, reducing complex inventory aggregation queries from 1.8s to under 45ms.</p>
+    </div>
+    <div class="deepdive-block">
+      <h5>Audit Trails & Observability</h5>
+      <p>Immutable event log tables capturing every ledger adjustment and operator authorization for end-to-end statutory compliance.</p>
+    </div>
+  </div>
+</div>

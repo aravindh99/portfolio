@@ -1,0 +1,30 @@
+<div class="project-deepdive-panel" id="deepdive-ithihasa">
+  <div class="deepdive-header">
+    <div class="deepdive-title-wrap">
+      <span class="deepdive-tag">ARCH_SPEC // 03</span>
+      <h4 class="deepdive-title">Ithihasa — High-Performance Mobile Commerce Architecture</h4>
+    </div>
+    <button type="button" class="deepdive-close-btn" onclick="document.getElementById('deepdive-ithihasa').remove()" aria-label="Close architecture breakdown">
+      [close ✕]
+    </button>
+  </div>
+  
+  <div class="deepdive-grid">
+    <div class="deepdive-block">
+      <h5>Progressive Web App Architecture</h5>
+      <p>Service workers utilizing Cache-First strategies for static assets and Stale-While-Revalidate for catalog queries, achieving sub-second initial load on 3G/4G networks.</p>
+    </div>
+    <div class="deepdive-block">
+      <h5>Offline Order Cart Sync</h5>
+      <p>Client-side IndexedDB persistence with automated exponential backoff synchronization when network connectivity fluctuates.</p>
+    </div>
+    <div class="deepdive-block">
+      <h5>Merchant Portal & Catalog Management</h5>
+      <p>Real-time SKU stock level synchronization, bulk product variant upload, and automated webhook triggers for instant order alerts.</p>
+    </div>
+    <div class="deepdive-block">
+      <h5>Optimized Asset Pipeline</h5>
+      <p>Automated WebP image compression with responsive srcset generation, maintaining crisp imagery while keeping mobile payload weights under 250KB.</p>
+    </div>
+  </div>
+</div>

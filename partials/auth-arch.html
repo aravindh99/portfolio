@@ -1,0 +1,30 @@
+<div class="project-deepdive-panel" id="deepdive-auth">
+  <div class="deepdive-header">
+    <div class="deepdive-title-wrap">
+      <span class="deepdive-tag">ARCH_SPEC // 04</span>
+      <h4 class="deepdive-title">Centralized Auth — Identity Federation & Token Lifecycle</h4>
+    </div>
+    <button type="button" class="deepdive-close-btn" onclick="document.getElementById('deepdive-auth').remove()" aria-label="Close architecture breakdown">
+      [close ✕]
+    </button>
+  </div>
+  
+  <div class="deepdive-grid">
+    <div class="deepdive-block">
+      <h5>Stateless Token Minting</h5>
+      <p>Asymmetric RS256 JWT key-pair rotation. Downstream microservices verify signatures locally using in-memory cached JWKS without pinging the auth service on every request.</p>
+    </div>
+    <div class="deepdive-block">
+      <h5>Instant Revocation & Redis Session Store</h5>
+      <p>Opaque refresh tokens persisted in Redis with SHA-256 fingerprinting. Enables immediate global logout and revocation cascades across all client devices.</p>
+    </div>
+    <div class="deepdive-block">
+      <h5>Hierarchical RBAC</h5>
+      <p>Bitmask-based and scoped role-permission trees cached in Redis hashes, evaluated in sub-millisecond middleware before routing to core ERP and CRM service handlers.</p>
+    </div>
+    <div class="deepdive-block">
+      <h5>Rate Limiting & Threat Mitigation</h5>
+      <p>Sliding window rate limiters implemented via Redis Lua scripts against brute-force credential stuffing and enumeration attacks.</p>
+    </div>
+  </div>
+</div>

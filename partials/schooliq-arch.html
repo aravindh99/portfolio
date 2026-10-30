@@ -1,0 +1,30 @@
+<div class="project-deepdive-panel" id="deepdive-schooliq">
+  <div class="deepdive-header">
+    <div class="deepdive-title-wrap">
+      <span class="deepdive-tag">ARCH_SPEC // 01</span>
+      <h4 class="deepdive-title">SchoolIQ — System Architecture & Data Flow</h4>
+    </div>
+    <button type="button" class="deepdive-close-btn" onclick="document.getElementById('deepdive-schooliq').remove()" aria-label="Close architecture breakdown">
+      [close ✕]
+    </button>
+  </div>
+  
+  <div class="deepdive-grid">
+    <div class="deepdive-block">
+      <h5>Multi-Tenant Isolation</h5>
+      <p>Tenant partitioning implemented at the PostgreSQL schema level with row-level security (RLS) policies for cross-school data isolation. Connection pooling managed via PgBouncer.</p>
+    </div>
+    <div class="deepdive-block">
+      <h5>Curriculum RAG Engine</h5>
+      <p>NCERT / State Board textbooks chunked via recursive character tokenizers, embedded via Vertex AI text-embeddings, and indexed into ChromaDB. Grounded LLM generation enforces zero hallucination in exam synthesis.</p>
+    </div>
+    <div class="deepdive-block">
+      <h5>Asynchronous Workflows</h5>
+      <p>Redis-backed BullMQ clusters handle long-running operations: PDF exam compilation, attendance aggregate rollups, and high-volume WhatsApp notification delivery.</p>
+    </div>
+    <div class="deepdive-block">
+      <h5>Telematics & Live Tracking</h5>
+      <p>School transit fleet tracking using WebSockets and Google Maps Platform API with server-side point clustering and geofence breach triggers.</p>
+    </div>
+  </div>
+</div>
