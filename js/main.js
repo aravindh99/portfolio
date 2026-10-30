@@ -161,22 +161,6 @@
               <div class="deepdive-block"><h5>Merchant Portal</h5><p>Real-time SKU stock synchronization, bulk product variant upload, and automated webhook triggers for orders.</p></div>
               <div class="deepdive-block"><h5>Optimized Asset Pipeline</h5><p>Automated WebP compression with responsive srcset generation keeping mobile payload under 250KB.</p></div>
             </div>
-          </div>`,
-        'partials/auth-arch.html': `
-          <div class="project-deepdive-panel" id="deepdive-auth">
-            <div class="deepdive-header">
-              <div class="deepdive-title-wrap">
-                <span class="deepdive-tag">ARCH_SPEC // 04</span>
-                <h4 class="deepdive-title">Centralized Auth — Identity Federation & Token Lifecycle</h4>
-              </div>
-              <button type="button" class="deepdive-close-btn" onclick="document.getElementById('deepdive-auth').remove()" aria-label="Close">[close ✕]</button>
-            </div>
-            <div class="deepdive-grid">
-              <div class="deepdive-block"><h5>Stateless Token Minting</h5><p>Asymmetric RS256 JWT key-pair rotation. Downstream microservices verify signatures locally using cached JWKS.</p></div>
-              <div class="deepdive-block"><h5>Instant Revocation</h5><p>Opaque refresh tokens persisted in Redis with SHA-256 fingerprinting for immediate global logout cascades.</p></div>
-              <div class="deepdive-block"><h5>Hierarchical RBAC</h5><p>Bitmask and scoped role trees cached in Redis, evaluated in sub-millisecond middleware before routing.</p></div>
-              <div class="deepdive-block"><h5>Threat Mitigation</h5><p>Sliding window rate limiters implemented via Redis Lua scripts against brute-force attacks.</p></div>
-            </div>
           </div>`
       };
 
